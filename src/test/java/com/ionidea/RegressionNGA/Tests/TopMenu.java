@@ -15,6 +15,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * @author Avicorn
+ */
+
 public class TopMenu extends TestNgTestBase {
 
   private PageHeader pageHeader;
@@ -37,7 +41,7 @@ public class TopMenu extends TestNgTestBase {
     
     WebElement ngaMenuLink = driver.findElement(By.xpath("//*[@id='mainnav']/li/a[contains(text(),'"+ "Shop" +"')]"));
     System.out.println("123"+ngaMenuLink.getText());
-    action. moveToElement(ngaMenuLink);
+    action.moveToElement(ngaMenuLink);
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     //driver.wait.until(ExpectedConditions.visibilityOf(ngaMenuLink)); //this will wait for elememt to be visible for 1 second
     action.click(ngaMenuLink).build().perform();

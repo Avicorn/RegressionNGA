@@ -37,7 +37,8 @@ public class LoginWithNGA extends TestNgTestBase {
     pageHeader.ngaFavoritesLink.click();
     
     wait.until(ExpectedConditions.visibilityOf(signIn.ngaLoginButton));
-    Assert.assertTrue("Sign In".equals(driver.getTitle())); //Make sure it's a right page.
+    //Make sure it's a right page.
+    Assert.assertTrue("Sign In".equals(driver.getTitle())); 
     
     action.moveToElement(signIn.ngaLoginButton);
     action.click(signIn.ngaLoginButton).build().perform();
@@ -70,7 +71,7 @@ public class LoginWithNGA extends TestNgTestBase {
     //TODO: figure out how to read properties from pom.xml
     //NOTE: add desired property inside <profile> section as on of <properties>, to application.properties, to TestNgTestBase and read it inside it in initTestSuite method.
     signIn.SignInWithNGA(driver, ngaUserLogin, "totallyrandomtext");
-    wait.withTimeout(Long.valueOf("30"),TimeUnit.SECONDS);
+    //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     Assert.assertTrue(driver.getPageSource().contains("User name and password do not match"));
   }
 }

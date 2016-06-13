@@ -1,6 +1,8 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
+import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Guice;
 
 /**
  * Abstract class representation of a Page in the UI. Page object pattern

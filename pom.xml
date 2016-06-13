@@ -7,6 +7,12 @@
   <packaging>jar</packaging>
 
   <dependencies>
+    <!-- http://mvnrepository.com/artifact/com.google.inject/guice -->
+    <dependency>
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>4.0</version>
+    </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -30,7 +36,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>htmlunit-driver</artifactId>
-      <version>2.20</version>
+      <version>2.21</version>
     </dependency>
     <dependency>
       <groupId>com.codeborne</groupId>

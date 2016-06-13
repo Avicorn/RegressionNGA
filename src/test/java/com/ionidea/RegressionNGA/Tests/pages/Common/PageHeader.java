@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Sample page
+ * @author Avicorn
  */
 public class PageHeader extends Page {
 
