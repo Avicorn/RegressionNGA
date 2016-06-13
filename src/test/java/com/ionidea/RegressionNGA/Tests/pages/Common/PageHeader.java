@@ -31,6 +31,8 @@ public class PageHeader extends Page {
     @CacheLookup //Now what cachelookup does is it stores elements having @cachelookup annotation applied over it and then stores this element for further reference/s.
     public WebElement ngaFavoritesLink;
     
+    @FindBy(id = "///*[@id='userSignOutLink']")
+    public WebElement userSignOutLink;
     
     
 

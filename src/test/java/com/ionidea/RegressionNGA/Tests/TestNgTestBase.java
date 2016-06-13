@@ -36,7 +36,7 @@ public class TestNgTestBase {
   protected static String ngaUserLogin;
   protected static String ngaUserPassword;
   protected static Capabilities capabilities;
-  protected static LoggingPreferences logs;
+  //protected static LoggingPreferences logs;
 
   protected WebDriver driver;
 
@@ -74,11 +74,10 @@ public class TestNgTestBase {
           System.out.println(testResult.getStatus());
           File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
-          DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-          System.out.println(dateFormat.format(new Date()));
+          DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_HH-mm-ss");
 	  //get current date time with Date()
-          FileUtils.copyFile(scrFile, new File("C:\\Tests\\testScreenShot"+dateFormat.format(new Date())+".jpg"));
-          
+          FileUtils.copyFile(scrFile, new File("C:\\Tests\\testName"+dateFormat.format(new Date())+".jpg"));
+          //TODO: Modify. Should create new date named folder on each run, screenshot should contain name of the test          
       }        
     }
 

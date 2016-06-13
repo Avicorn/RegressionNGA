@@ -26,39 +26,41 @@ public class LoginWithNGA extends TestNgTestBase {
 
   @Test
   public void correctPasswordPositiveCase() {
+    
+    driver.manage().deleteAllCookies();
     driver.get(baseUrl);
-      
-    Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, 1); //seconds
     
-    wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
-    pageHeader.ngaFavoritesLink.click();
-    
-    wait.until(ExpectedConditions.visibilityOf(pageHeader.header));
-    Assert.assertFalse("Sign In".equals(pageHeader.header.getText())); //Check page Header.
-    
-    wait.until(ExpectedConditions.visibilityOf(signIn.ngaLoginButton));
-    action.moveToElement(signIn.ngaLoginButton);
-    action.click(signIn.ngaLoginButton).build().perform();
-    
-    //correct user correct login password positive case
-    signIn.SignInWithNGA(driver, ngaUserLogin, ngaUserPassword);
-    Assert.assertTrue(driver.getPageSource().contains("Sign Out"));
-    Assert.assertTrue("Favorites".equals(pageHeader.header.getText()));
-  }
-  
-  @Test
-  public void incorrectPasswordNegativeCase() throws InterruptedException {
-    driver.get(baseUrl);
-      
     Actions action = new Actions(driver);
     WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();
     
-    wait.until(ExpectedConditions.visibilityOf(pageHeader.header));
-    Assert.assertFalse("Sign In".equals(pageHeader.header.getText())); //Check page Header.
+    wait.until(ExpectedConditions.visibilityOf(signIn.ngaLoginButton));
+    Assert.assertTrue("Sign In".equals(driver.getTitle())); //Make sure it's a right page.
+    
+    action.moveToElement(signIn.ngaLoginButton);
+    action.click(signIn.ngaLoginButton).build().perform();
+    
+    //correct user correct login password positive case
+    signIn.SignInWithNGA(driver, ngaUserLogin, ngaUserPassword);
+    Assert.assertTrue(driver.getPageSource().contains("Sign Out"));
+    Assert.assertTrue("Favorites".equals(driver.getTitle())); //Check page Header.
+  }
+  
+  @Test
+  public void incorrectPasswordNegativeCase() throws InterruptedException {
+    driver.manage().deleteAllCookies();
+    driver.get(baseUrl);
+          
+    Actions action = new Actions(driver);
+    WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
+    
+    wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
+    pageHeader.ngaFavoritesLink.click();
+    
+    wait.until(ExpectedConditions.visibilityOf(signIn.ngaLoginButton));
+    Assert.assertTrue("Sign In".equals(driver.getTitle())); //Make sure it's a right page.
     
     wait.until(ExpectedConditions.visibilityOf(signIn.ngaLoginButton));
     action.moveToElement(signIn.ngaLoginButton);
