@@ -57,8 +57,6 @@ public class TestNgTestBase {
     
     @BeforeSuite
     public void initTestSuite() throws IOException {
-        WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
-        
         m_baseUrl = m_config.getProperty("site.url");
         m_gridHubUrl = m_config.getProperty("grid.url");
         m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
@@ -69,15 +67,17 @@ public class TestNgTestBase {
             m_gridHubUrl = null;
         }
 
+        //    logs = new LoggingPreferences();
+        //    logs.enable(LogType.BROWSER, Level.ALL);
+        //    logs.enable(LogType.CLIENT, Level.ALL);
+        //    logs.enable(LogType.DRIVER, Level.ALL);
+        //    logs.enable(LogType.PERFORMANCE, Level.ALL);
+        //    logs.enable(LogType.PROFILER, Level.ALL);
+        //    logs.enable(LogType.SERVER, Level.ALL);
+        
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
 
-//    logs = new LoggingPreferences();
-//    logs.enable(LogType.BROWSER, Level.ALL);
-//    logs.enable(LogType.CLIENT, Level.ALL);
-//    logs.enable(LogType.DRIVER, Level.ALL);
-//    logs.enable(LogType.PERFORMANCE, Level.ALL);
-//    logs.enable(LogType.PROFILER, Level.ALL);
-//    logs.enable(LogType.SERVER, Level.ALL);
+
 
     }
 
