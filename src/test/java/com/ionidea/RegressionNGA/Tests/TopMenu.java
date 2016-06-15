@@ -30,7 +30,7 @@ public class TopMenu extends TestNgTestBase {
 
   @Test
   public void testHomePageHasAHeader() {
-    driver.get(baseUrl);
+    driver.get(m_baseUrl);
         
     Actions action = new Actions(driver);
     action. moveToElement(pageHeader.ngaHomeLink);

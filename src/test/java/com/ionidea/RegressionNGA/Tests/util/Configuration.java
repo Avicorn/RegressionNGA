@@ -5,22 +5,44 @@
  */
 package com.ionidea.RegressionNGA.Tests.util;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.openqa.selenium.Capabilities;
+import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 
 /**
  * @author Avicorn
  */
 public class Configuration implements IConfiguration {
-    private String _outputPath;
+    private PropertyLoader m_propertyLoader;
+    
+    private String m_outputPath;
+    private DateFormat m_dateFormat;
     
     public Configuration() {
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_HH-mm-ss");
-        this._outputPath = "../"+dateFormat.format(new Date())+"/";
+        System.out.println("[Configuration]");
+        m_propertyLoader = new PropertyLoader();
+        
+        m_dateFormat = new SimpleDateFormat("MM-dd-yyyy_HH-mm-ss");
+        m_outputPath = "../test-results/" + m_dateFormat.format(new Date()) + "/";
     }
 
-    public String getOutputPath() {
-        return _outputPath;
+    public DateFormat getDateFormat() {
+        return m_dateFormat;
     }
+    
+    public String getOutputPath() {
+        return m_outputPath;
+    }
+    
+    public String getProperty(String name) throws IOException {
+        return m_propertyLoader.loadProperty(name);
+    }
+    
+    public Capabilities getCapabilities() throws IOException {
+        return m_propertyLoader.loadCapabilities();
+    }
+
 }

@@ -15,7 +15,6 @@ import org.testng.annotations.BeforeSuite;
 import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
 
-import com.ionidea.RegressionNGA.Tests.util.PropertyLoader;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +29,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import java.lang.*;
 import org.testng.annotations.Guice;
+import com.ionidea.RegressionNGA.Tests.util.IFileHelper;
 
 /**
  * Base class for TestNG-based test classes
@@ -37,25 +37,40 @@ import org.testng.annotations.Guice;
 @Guice(modules = GlobalCommonModule.class)
 public class TestNgTestBase {
 
-  protected static String gridHubUrl;
-  protected static String baseUrl;
-  protected static String ngaUserLogin;
-  protected static String ngaUserPassword;
-  protected static Capabilities capabilities;
-  
-  //protected static LoggingPreferences logs;
+    @Inject
+    protected IConfiguration m_config;
+    @Inject
+    protected IFileHelper m_fileHelper;
 
-  protected WebDriver driver;
-  @Inject
-  private IConfiguration _configuration;
-  
-  @BeforeSuite
-  public void initTestSuite() throws IOException{
-    baseUrl = PropertyLoader.loadProperty("site.url");
-    gridHubUrl = PropertyLoader.loadProperty("grid.url");
-    ngaUserLogin = PropertyLoader.loadProperty("ngaUserLogin");
-    ngaUserPassword = PropertyLoader.loadProperty("ngaUserPassword");
+    protected static String m_gridHubUrl;
+    protected static String m_baseUrl;
+    protected static String m_ngaUserLogin;
+    protected static String m_ngaUserPassword;
+    protected static Capabilities m_capabilities;
+
+  //protected static LoggingPreferences logs;
+    protected WebDriver driver;
+
+    public void init() {
     
+    }
+    
+    @BeforeSuite
+    public void initTestSuite() throws IOException {
+        WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+        
+        m_baseUrl = m_config.getProperty("site.url");
+        m_gridHubUrl = m_config.getProperty("grid.url");
+        m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
+        m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
+        m_capabilities = m_config.getCapabilities();
+
+        if ("".equals(m_gridHubUrl)) {
+            m_gridHubUrl = null;
+        }
+
+        WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+
 //    logs = new LoggingPreferences();
 //    logs.enable(LogType.BROWSER, Level.ALL);
 //    logs.enable(LogType.CLIENT, Level.ALL);
@@ -63,39 +78,30 @@ public class TestNgTestBase {
 //    logs.enable(LogType.PERFORMANCE, Level.ALL);
 //    logs.enable(LogType.PROFILER, Level.ALL);
 //    logs.enable(LogType.SERVER, Level.ALL);
-    
-    if ("".equals(gridHubUrl)) {
-      gridHubUrl = null;
+
     }
-    capabilities = PropertyLoader.loadCapabilities();
-    
-    WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
-  }
 
     @BeforeMethod
-    public void initWebDriver() {
-      driver = WebDriverFactory.getDriver(gridHubUrl, capabilities);
+    public void initWebDriver() throws IOException {
+        driver = WebDriverFactory.getDriver(m_gridHubUrl, m_capabilities);
     }
 
     @AfterMethod
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             System.out.println(testResult.getStatus());
-            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
-            DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_HH-mm-ss");
-            //get current date time with Date()
+            m_fileHelper.insurePathExists(m_config.getOutputPath());
+
+            byte[] screenshootBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             
-            (new File(_configuration.getOutputPath())).mkdirs();
-            FileUtils.copyFile(scrFile, new File(_configuration.getOutputPath() + this.getClass().getName()+dateFormat.format(new Date())+".jpg"));
-            //TODO: Modify. Should create new date named folder on each run, screenshot should contain name of the test          
-          
-      }        
+            String screenshootFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");
+            FileUtils.writeByteArrayToFile(new File(screenshootFilePath), screenshootBytes);
+       }
     }
 
-  
     @AfterSuite(alwaysRun = true)
     public void tearDown() {
-      WebDriverFactory.dismissAll();
+        WebDriverFactory.dismissAll();
     }
 }

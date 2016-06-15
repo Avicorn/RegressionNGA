@@ -19,7 +19,7 @@ public class SampleTestNgTest extends TestNgTestBase {
 
   @Test
   public void testHomePageHasAHeader() {
-    driver.get(baseUrl);
+    driver.get(m_baseUrl);
     Assert.assertFalse("".equals(homepage.header.getText()));
     
   }
