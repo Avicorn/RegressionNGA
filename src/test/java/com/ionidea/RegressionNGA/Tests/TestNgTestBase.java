@@ -30,6 +30,12 @@ import org.testng.annotations.AfterMethod;
 import java.lang.*;
 import org.testng.annotations.Guice;
 import com.ionidea.RegressionNGA.Tests.util.IFileHelper;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.Logs;
 
 /**
  * Base class for TestNG-based test classes
@@ -66,20 +72,19 @@ public class TestNgTestBase {
         if ("".equals(m_gridHubUrl)) {
             m_gridHubUrl = null;
         }
-
-        //    logs = new LoggingPreferences();
-        //    logs.enable(LogType.BROWSER, Level.ALL);
-        //    logs.enable(LogType.CLIENT, Level.ALL);
-        //    logs.enable(LogType.DRIVER, Level.ALL);
-        //    logs.enable(LogType.PERFORMANCE, Level.ALL);
-        //    logs.enable(LogType.PROFILER, Level.ALL);
-        //    logs.enable(LogType.SERVER, Level.ALL);
-        
+//
+//        logs = new LoggingPreferences();
+//        logs.enable(LogType.BROWSER, Level.ALL);
+//        logs.enable(LogType.CLIENT, Level.ALL);
+//        logs.enable(LogType.DRIVER, Level.ALL);
+//        logs.enable(LogType.PERFORMANCE, Level.ALL);
+//        logs.enable(LogType.PROFILER, Level.ALL);
+//        logs.enable(LogType.SERVER, Level.ALL);
+//        DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+//        desiredCapabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
+//        
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
-
-
-
-    }
+   }
 
     @BeforeMethod
     public void initWebDriver() throws IOException {
@@ -95,8 +100,25 @@ public class TestNgTestBase {
 
             byte[] screenshootBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             
-            String screenshootFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");
-            FileUtils.writeByteArrayToFile(new File(screenshootFilePath), screenshootBytes);
+            String onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");
+            FileUtils.writeByteArrayToFile(new File(onFailureFilePath), screenshootBytes);
+            
+            Logs logs = driver.manage().logs();
+            LogEntries logEntries = logs.get(LogType.DRIVER);
+            
+            onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".log");
+            File driverLog = new File(onFailureFilePath);
+            FileOutputStream fos = new FileOutputStream(driverLog);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+            String logLine;
+
+            for (LogEntry logEntry : logEntries) {
+                logLine = logEntry.getMessage();
+                bw.write(logLine);
+                bw.newLine();
+                System.out.println(logLine);
+            }
+            bw.close();
        }
     }
 
