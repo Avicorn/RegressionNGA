@@ -98,18 +98,20 @@ public class TestNgTestBase {
 
             m_fileHelper.insurePathExists(m_config.getOutputPath());
 
+            //screenshot
             byte[] screenshootBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            
             String onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");
             FileUtils.writeByteArrayToFile(new File(onFailureFilePath), screenshootBytes);
-            
+
+            //log file
             Logs logs = driver.manage().logs();
-            LogEntries logEntries = logs.get(LogType.DRIVER);
+            LogEntries logEntries = logs.get(LogType.DRIVER);  
             
             onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".log");
             File driverLog = new File(onFailureFilePath);
             FileOutputStream fos = new FileOutputStream(driverLog);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+
             String logLine;
 
             for (LogEntry logEntry : logEntries) {
