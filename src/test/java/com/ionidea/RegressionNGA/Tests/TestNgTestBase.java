@@ -33,6 +33,7 @@ import com.ionidea.RegressionNGA.Tests.util.IFileHelper;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.Logs;
@@ -60,6 +61,20 @@ public class TestNgTestBase {
     public void init() {
     
     }
+    
+    protected boolean IsMobile() {
+        return driver.manage().window().getSize().width < 0; //add actual value
+    }
+    
+    protected boolean IsTablet() {
+        int width = driver.manage().window().getSize().width;
+        return 0 < width && width < 1024; //add ac
+    }
+    protected boolean IsDesktop() {
+        return driver.manage().window().getSize().width >= 1024;
+    }
+
+    
     
     @BeforeSuite
     public void initTestSuite() throws IOException {
@@ -89,6 +104,8 @@ public class TestNgTestBase {
     @BeforeMethod
     public void initWebDriver() throws IOException {
         driver = WebDriverFactory.getDriver(m_gridHubUrl, m_capabilities);
+        //TODO: move this to config for test suit, so that it would be possible to run suit with diff dims
+        driver.manage().window().setSize(new Dimension(1024 + 50, 768)); 
     }
 
     @AfterMethod
