@@ -64,7 +64,6 @@ public class TestNgTestBase {
     
     }
     
-    @Inject
     public void waitForPageLoaded() {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
@@ -140,7 +139,15 @@ public class TestNgTestBase {
                 bw.newLine();
                 System.out.println(logLine);
             }
-
+            
+            logEntries = logs.get(LogType.BROWSER);
+            for (LogEntry logEntry : logEntries) {
+                logLine = logEntry.getMessage();
+                bw.write(logLine);
+                bw.newLine();
+                System.out.println(logLine);
+            }
+            
             bw.close();
        }
     }
