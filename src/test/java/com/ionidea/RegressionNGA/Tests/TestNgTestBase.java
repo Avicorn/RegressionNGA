@@ -16,27 +16,30 @@ import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import java.lang.*;
 import org.testng.annotations.Guice;
 import com.ionidea.RegressionNGA.Tests.util.IFileHelper;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.logging.Level;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 /**
  * Base class for TestNG-based test classes
@@ -48,33 +51,34 @@ public class TestNgTestBase {
     protected IConfiguration m_config;
     @Inject
     protected IFileHelper m_fileHelper;
-
+    
     protected static String m_gridHubUrl;
     protected static String m_baseUrl;
     protected static String m_ngaUserLogin;
     protected static String m_ngaUserPassword;
     protected static Capabilities m_capabilities;
 
-  //protected static LoggingPreferences logs;
     protected WebDriver driver;
 
     public void init() {
     
     }
     
-    protected boolean IsMobile() {
-        return driver.manage().window().getSize().width < 0; //add actual value
-    }
-    
-    protected boolean IsTablet() {
-        int width = driver.manage().window().getSize().width;
-        return 0 < width && width < 1024; //add ac
-    }
-    protected boolean IsDesktop() {
-        return driver.manage().window().getSize().width >= 1024;
-    }
+    @Inject
+    public void waitForPageLoaded() {
+        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
 
-    
+        Wait<WebDriver> wait = new WebDriverWait(driver, 30);
+        try {
+            wait.until(expectation);
+        } catch (Throwable error) {
+            Assert.fail("Timeout waiting for Page Load Request to complete.", error);
+        }
+    }
     
     @BeforeSuite
     public void initTestSuite() throws IOException {
@@ -83,21 +87,21 @@ public class TestNgTestBase {
         m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
         m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
         m_capabilities = m_config.getCapabilities();
+        
+        LoggingPreferences logs = new LoggingPreferences();
+        logs.enable(LogType.BROWSER, Level.ALL);
+        logs.enable(LogType.CLIENT, Level.ALL);
+        logs.enable(LogType.DRIVER, Level.ALL);
+        logs.enable(LogType.PERFORMANCE, Level.ALL);
+        logs.enable(LogType.PROFILER, Level.ALL);
+        logs.enable(LogType.SERVER, Level.ALL);
+        
+        ((DesiredCapabilities)m_capabilities).setCapability(CapabilityType.LOGGING_PREFS, logs);
 
         if ("".equals(m_gridHubUrl)) {
             m_gridHubUrl = null;
         }
-//
-//        logs = new LoggingPreferences();
-//        logs.enable(LogType.BROWSER, Level.ALL);
-//        logs.enable(LogType.CLIENT, Level.ALL);
-//        logs.enable(LogType.DRIVER, Level.ALL);
-//        logs.enable(LogType.PERFORMANCE, Level.ALL);
-//        logs.enable(LogType.PROFILER, Level.ALL);
-//        logs.enable(LogType.SERVER, Level.ALL);
-//        DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
-//        desiredCapabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
-//        
+        
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
    }
 
@@ -120,15 +124,14 @@ public class TestNgTestBase {
             String onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");
             FileUtils.writeByteArrayToFile(new File(onFailureFilePath), screenshootBytes);
 
-            //log file
-            Logs logs = driver.manage().logs();
-            LogEntries logEntries = logs.get(LogType.DRIVER);  
-            
             onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".log");
             File driverLog = new File(onFailureFilePath);
             FileOutputStream fos = new FileOutputStream(driverLog);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
+            //log file
+            Logs logs = driver.manage().logs();
+            LogEntries logEntries = logs.get(LogType.DRIVER);            
             String logLine;
 
             for (LogEntry logEntry : logEntries) {
@@ -137,6 +140,7 @@ public class TestNgTestBase {
                 bw.newLine();
                 System.out.println(logLine);
             }
+
             bw.close();
        }
     }
