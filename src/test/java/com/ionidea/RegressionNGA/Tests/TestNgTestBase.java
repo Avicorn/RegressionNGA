@@ -139,15 +139,15 @@ public class TestNgTestBase {
                 bw.newLine();
                 System.out.println(logLine);
             }
-            
-            logEntries = logs.get(LogType.BROWSER);
-            for (LogEntry logEntry : logEntries) {
-                logLine = logEntry.getMessage();
-                bw.write(logLine);
-                bw.newLine();
-                System.out.println(logLine);
-            }
-            
+//            
+//            logEntries = logs.get(LogType.BROWSER);
+//            for (LogEntry logEntry : logEntries) {
+//                logLine = logEntry.getMessage();
+//                bw.write(logLine);
+//                bw.newLine();
+//                System.out.println(logLine);
+//            }
+//            
             bw.close();
        }
     }
