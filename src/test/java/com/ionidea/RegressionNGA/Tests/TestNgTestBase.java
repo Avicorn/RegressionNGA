@@ -3,6 +3,7 @@ package com.ionidea.RegressionNGA.Tests;
 import com.google.inject.Inject;
 import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
 import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
+import com.ionidea.RegressionNGA.Tests.util.IDriverExtension;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
@@ -51,11 +52,15 @@ public class TestNgTestBase {
     protected IConfiguration m_config;
     @Inject
     protected IFileHelper m_fileHelper;
+    @Inject
+    protected IDriverExtension m_driverExtension;
+    
 
     protected static String m_gridHubUrl;
     protected static String m_baseUrl;
     protected static String m_ngaUserLogin;
     protected static String m_ngaUserPassword;
+    protected static int m_standartWaitTime;
     protected static Capabilities m_capabilities;
 
     protected WebDriver driver;
@@ -63,29 +68,16 @@ public class TestNgTestBase {
     public void init() {
 
     }
-
-    public void waitForPageLoaded() {
-        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-            }
-        };
-
-        Wait<WebDriver> wait = new WebDriverWait(driver, 30);
-        try {
-            wait.until(expectation);
-        } catch (Throwable error) {
-            Assert.fail("Timeout waiting for Page Load Request to complete.", error);
-        }
-    }
-
+    
     @BeforeSuite
     public void initTestSuite() throws IOException {
         m_baseUrl = m_config.getProperty("site.url");
         m_gridHubUrl = m_config.getProperty("grid.url");
         m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
         m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
+        m_standartWaitTime = Integer.valueOf(m_config.getProperty("standartWaitTime"));
         m_capabilities = m_config.getCapabilities();
+        
 
         LoggingPreferences logs = new LoggingPreferences();
         logs.enable(LogType.BROWSER, Level.ALL);

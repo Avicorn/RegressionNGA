@@ -1,6 +1,7 @@
 package com.ionidea.RegressionNGA.Tests;
 
 import com.ionidea.RegressionNGA.Tests.pages.Common.PageHeader;
+import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,11 +15,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Guice;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Avicorn
  */
+@Guice(modules = GlobalCommonModule.class)
 public class TopMenu extends TestNgTestBase {
     
     private PageHeader pageHeader;
@@ -31,7 +34,10 @@ public class TopMenu extends TestNgTestBase {
     }
 
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Calendar of Events')]")
-    private WebElement calendarHeader;    
+    private WebElement calendarHeader;
+    
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'ARTISTS')]")
+    private WebElement artists;
     
 //    @Test
 //    public void testHomePageHasAHeader() throws NotImplementedException {
@@ -73,7 +79,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupCollection() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0))));
         Assert.assertEquals(pageHeader.getMainMenuElement(0).findElement(By.tagName("a")).getText(), "Collection");
@@ -89,7 +96,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupCollectionHighlights() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,0))));
         Assert.assertEquals(pageHeader.getMainMenuElement(0,0).findElement(By.tagName("a")).getText(), "Highlights");
@@ -100,29 +108,49 @@ public class TopMenu extends TestNgTestBase {
         Assert.assertTrue("Highlights".equals(driver.getTitle()));
         Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/highlights.html".equals(driver.getCurrentUrl()));
         Assert.assertTrue("Highlights".equals(driver.findElement(By.tagName("h2")).getText()));
-    }    
-
+    } 
+    
     @Test
-    public void menuGroupCollectionArtists() throws NotImplementedException {
+    public void menuGroupCollectionCollectionSearchs() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,1))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(0,1).findElement(By.tagName("a")).getText(), "Artists");
+        Assert.assertEquals(pageHeader.getMainMenuElement(0,1).findElement(By.tagName("a")).getText(), "Search the Collection");
         
         pageHeader.getMainMenuElement(0,1).click();
         wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
         
-        Assert.assertTrue("artists".equals(driver.getTitle()));
+        Assert.assertTrue("Collection Search".equals(driver.getTitle()));
+        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/collection-search.html".equals(driver.getCurrentUrl()));
+        Assert.assertTrue("Search the Collection".equals(driver.findElement(By.tagName("h2")).getText()));
+    }
+    
+    @Test
+    public void menuGroupCollectionArtists() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,2))));
+        Assert.assertEquals(pageHeader.getMainMenuElement(0,2).findElement(By.tagName("a")).getText(), "Artists");
+        
+        pageHeader.getMainMenuElement(0,2).click();
+        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        
+        Assert.assertTrue("Artists".equals(driver.getTitle()));
         Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/artists.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("ARTISTS".equals(driver.findElement(By.tagName("h2")).getText()));
+        //in this particular case target h2 isn't the first in the DOM
+        Assert.assertTrue(artists.isDisplayed());
     }
     
     // Exhibitions menu group
     @Test
     public void menuGroupExhibitions() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(1))));
         Assert.assertEquals(pageHeader.getMainMenuElement(1).findElement(By.tagName("a")).getText(), "Exhibitions");
@@ -138,7 +166,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupEducation() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(2))));
         Assert.assertEquals(pageHeader.getMainMenuElement(2).findElement(By.tagName("a")).getText(), "Education");
@@ -154,7 +183,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupConservation() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(3))));
         Assert.assertEquals(pageHeader.getMainMenuElement(3).findElement(By.tagName("a")).getText(), "Conservation");
@@ -170,7 +200,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupResearch() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(4))));
         Assert.assertEquals(pageHeader.getMainMenuElement(4).findElement(By.tagName("a")).getText(), "Research");
@@ -186,7 +217,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupCalendar() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(5))));
         Assert.assertEquals(pageHeader.getMainMenuElement(5).findElement(By.tagName("a")).getText(), "Calendar");
@@ -203,7 +235,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupVisit() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(6))));
         Assert.assertEquals(pageHeader.getMainMenuElement(6).findElement(By.tagName("a")).getText(), "Visit");
@@ -219,7 +252,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupSupport() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(7))));
         Assert.assertEquals(pageHeader.getMainMenuElement(7).findElement(By.tagName("a")).getText(), "Support");
@@ -235,7 +269,8 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupShop() throws NotImplementedException {
         driver.get(m_baseUrl);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
         
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(8))));
         Assert.assertEquals(pageHeader.getMainMenuElement(8).findElement(By.tagName("a")).getText(), "Shop");

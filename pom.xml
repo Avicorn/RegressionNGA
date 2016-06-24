@@ -144,6 +144,7 @@
                 <site.url>http://www.nga.gov/</site.url>
                 <ngaUserLogin>a-forostovsky@nga.gov</ngaUserLogin>
                 <ngaUserPassword>Asd12345</ngaUserPassword>
+                <standartWaitTime>30</standartWaitTime>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
