@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.ionidea.RegressionNGA.Tests.pages.HomePage;
+import com.ionidea.RegressionNGA.Tests.pages.ExamplePage;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +21,8 @@ public class LoginWithNGA extends TestNgTestBase {
   @BeforeMethod
   public void initPageObjects() {
     signIn = PageFactory.initElements(driver, SignIn.class);
+    signIn.Initialize(m_config);
+
     pageHeader = PageFactory.initElements(driver, PageHeader.class);
   }
 
@@ -31,7 +33,7 @@ public class LoginWithNGA extends TestNgTestBase {
     driver.get(m_baseUrl);
     
     Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
+    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime); //seconds
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();
@@ -55,7 +57,7 @@ public class LoginWithNGA extends TestNgTestBase {
     driver.get(m_baseUrl);
           
     Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
+    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime); //seconds
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();

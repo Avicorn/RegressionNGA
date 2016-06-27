@@ -41,6 +41,18 @@ public class Configuration implements IConfiguration {
         return m_propertyLoader.loadProperty(name);
     }
     
+    public int getPropertyAsInt(String name) throws NumberFormatException, IOException {
+        return Integer.valueOf(getProperty(name));
+    }
+
+    public long getPropertyAsLong(String name) throws NumberFormatException, IOException {
+        return Long.valueOf(getProperty(name));
+    }
+   
+    public int getStandartWaitTime() throws NumberFormatException, IOException {
+        return getPropertyAsInt("standartWaitTime");
+    }
+    
     public Capabilities getCapabilities() throws IOException {
         return m_propertyLoader.loadCapabilities();
     }

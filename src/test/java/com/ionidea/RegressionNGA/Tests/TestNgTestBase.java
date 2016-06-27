@@ -29,18 +29,14 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 /**
  * Base class for TestNG-based test classes
@@ -54,13 +50,13 @@ public class TestNgTestBase {
     protected IFileHelper m_fileHelper;
     @Inject
     protected IDriverExtension m_driverExtension;
-    
 
     protected static String m_gridHubUrl;
     protected static String m_baseUrl;
     protected static String m_ngaUserLogin;
     protected static String m_ngaUserPassword;
     protected static int m_standartWaitTime;
+    
     protected static Capabilities m_capabilities;
 
     protected WebDriver driver;
@@ -68,17 +64,23 @@ public class TestNgTestBase {
     public void init() {
 
     }
-    
-    @BeforeSuite
-    public void initTestSuite() throws IOException {
-        m_baseUrl = m_config.getProperty("site.url");
-        m_gridHubUrl = m_config.getProperty("grid.url");
-        m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
-        m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
-        m_standartWaitTime = Integer.valueOf(m_config.getProperty("standartWaitTime"));
-        m_capabilities = m_config.getCapabilities();
-        
 
+    @BeforeSuite
+    public void initTestSuite() {
+
+        try {
+            m_baseUrl = m_config.getProperty("site.url");
+            m_gridHubUrl = m_config.getProperty("grid.url");
+            m_ngaUserLogin = m_config.getProperty("ngaUserLogin");
+            m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
+            m_standartWaitTime = Integer.valueOf(m_config.getProperty("standartWaitTime"));
+            m_capabilities = m_config.getCapabilities();
+        } catch (IOException ex) {
+            Logger.getLogger(TestNgTestBase.class.getName()).log(Level.SEVERE, null, ex);
+
+            System.exit(1);
+        }
+        
         LoggingPreferences logs = new LoggingPreferences();
         logs.enable(LogType.BROWSER, Level.ALL);
         logs.enable(LogType.CLIENT, Level.ALL);
@@ -94,9 +96,6 @@ public class TestNgTestBase {
         }
 
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
-
-        //System.setProperty("webdriver.chrome.driver", "c:\\Tools\\chromedriver.exe");
-
     }
 
     @BeforeMethod
@@ -108,10 +107,11 @@ public class TestNgTestBase {
 
     @AfterMethod
     public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+        
         if (testResult.getStatus() == ITestResult.FAILURE) {
             System.out.println("Test failed " + testResult.getName());
             m_fileHelper.insurePathExists(m_config.getOutputPath());
-            
+
 //TODO: modify folder/files naming strategy to incorporate getTestName() for test classes with lots of tests inside
             //screenshot
             byte[] screenshootBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);

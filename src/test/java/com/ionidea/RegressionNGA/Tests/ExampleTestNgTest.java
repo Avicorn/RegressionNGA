@@ -6,15 +6,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.ionidea.RegressionNGA.Tests.pages.HomePage;
+import com.ionidea.RegressionNGA.Tests.pages.ExamplePage;
 
-public class SampleTestNgTest extends TestNgTestBase {
+public class ExampleTestNgTest extends TestNgTestBase {
 
-  private HomePage homepage;
+  private ExamplePage homepage;
 
   @BeforeMethod
   public void initPageObjects() {
-    homepage = PageFactory.initElements(driver, HomePage.class);
+    homepage = PageFactory.initElements(driver, ExamplePage.class);
+    homepage.Initialize(m_config);
+
   }
 
   @Test

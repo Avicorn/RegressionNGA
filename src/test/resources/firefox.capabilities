@@ -1,4 +1,5 @@
 browserName = firefox
-nativeEvents = true
+nativeEvents = false
+applicationCacheEnabled=false
 webdriver.log.driver = DEBUG
 webdriver.log.file = "../test-results/sel.log"

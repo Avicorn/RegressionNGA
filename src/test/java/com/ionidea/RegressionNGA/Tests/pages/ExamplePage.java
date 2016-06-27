@@ -1,5 +1,6 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
+import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -9,13 +10,13 @@ import org.openqa.selenium.support.How;
 /**
  * Sample page
  */
-public class HomePage extends Page {
+public class ExamplePage extends Page {
 
-  @FindBy(how = How.TAG_NAME, using = "h1")
-  @CacheLookup
-  public WebElement header;
+    @FindBy(how = How.TAG_NAME, using = "h1")
+    @CacheLookup
+    public WebElement header;
 
-  public HomePage(WebDriver webDriver) {
-    super(webDriver);
-  }
+    public ExamplePage(WebDriver webDriver) {
+        super(webDriver);
+    }
 }

@@ -1,6 +1,7 @@
 package com.ionidea.RegressionNGA.Tests.pages.Common;
 
 import com.ionidea.RegressionNGA.Tests.pages.*;
+import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,7 +38,8 @@ public class SignIn extends Page {
         ngaLoginSignInButton.click();
     }
   
-    public SignIn(WebDriver webDriver) {
-      super(webDriver);
+    public SignIn(WebDriver driver) {
+        super(driver);
     }
+    
 }
