@@ -94,6 +94,9 @@ public class TestNgTestBase {
         }
 
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+
+        //System.setProperty("webdriver.chrome.driver", "c:\\Tools\\chromedriver.exe");
+
     }
 
     @BeforeMethod
@@ -129,7 +132,7 @@ public class TestNgTestBase {
                 logLine = logEntry.getMessage();
                 bw.write(logLine);
                 bw.newLine();
-                System.out.println(logLine);
+                //System.out.println(logLine);
             }
 //            
 //            logEntries = logs.get(LogType.BROWSER);

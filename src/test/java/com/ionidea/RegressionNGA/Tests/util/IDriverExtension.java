@@ -6,6 +6,7 @@
 package com.ionidea.RegressionNGA.Tests.util;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -13,4 +14,5 @@ import org.openqa.selenium.WebDriver;
  */
 public interface IDriverExtension {
      void waitForPageLoaded(WebDriver driver, int standartWaitTime);
+    String getElementText(WebElement element);
 }

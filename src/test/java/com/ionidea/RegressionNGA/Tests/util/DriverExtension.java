@@ -8,6 +8,7 @@ package com.ionidea.RegressionNGA.Tests.util;
 import com.google.inject.Inject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,4 +34,9 @@ public class DriverExtension implements IDriverExtension{
             Assert.fail("Timeout waiting for Page Load Request to complete.", error);
         }
     }
+    
+    
+    public String getElementText(WebElement element) {
+        return element.getAttribute("innerText");
+    } 
 }

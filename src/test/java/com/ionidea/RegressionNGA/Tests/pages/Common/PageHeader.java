@@ -93,20 +93,22 @@ public class PageHeader extends Page {
             .findElement(By.xpath(CNST_DESKTOP_MAIN_MENU_GROUP_ITEM_ANCHOR_BY_NAME.replace("{{item-alias}}", groupItemAlias)));
     }
     
-    public WebElement getMainMenuElement(int groupNumber, int groupItemNumber){
-        return getMainMenuElement(groupNumber)
-                .findElements(By.xpath(CNST_DESKTOP_MAIN_MENU_GROUP_ITEM_ANCHOR_BY_NAME.replace("/a[contains(text(), '{{item-alias}}')]/..", "")))
-                .get(groupItemNumber);
+    public WebElement getMainMenuElement(int groupNumber, int groupItemNumber) {
+        String t = "ul/li[{{item-index}}]";
+
+        WebElement groupElement = getMainMenuElement(groupNumber);
+        WebElement groupItemElement = groupElement
+                .findElement(By.xpath(t.replace("{{item-index}}", Integer.toString(groupItemNumber + 1)))); 
+        
+        hoverElement(groupElement);        
+
+        return groupItemElement;
     }
     
     public WebElement getMainMenuElement(int groupNumber){
-        WebElement groupElement;
-        groupElement = driver
-                    .findElements(By.xpath(CNST_DESKTOP_MAIN_MENU_GROUP_ANCHOR_BY_NAME.replace("/a[contains(text(), '{{group-alias}}')]/..", "")))
-                    .get(groupNumber);
-        hoverElement(groupElement.findElement(By.tagName("a")));        
+        String t = "//*[@id='wrapper']/*[@id='header-wrap']/*[@id='header']/ul[@id='mainnav']/li[{{group-index}}]";
         
-        return groupElement;
+        return driver.findElement(By.xpath(t.replace("{{group-index}}", Integer.toString(groupNumber + 1))));
     }
     
 
