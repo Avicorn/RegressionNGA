@@ -26,11 +26,20 @@ public class GlobalCommonModule implements Module {
         return m_fileHelper;
     }
     
+    private static IDriverExtension m_driverExtension;
+    private static IDriverExtension getDriverExtension() {
+        if (m_driverExtension == null) {
+            m_driverExtension = new DriverExtension();
+        }
+
+        return m_driverExtension;
+    }
     
     
     @Override
     public void configure(Binder binder) {
         binder.bind(IConfiguration.class).toInstance(getConfiguration());
         binder.bind(IFileHelper.class).toInstance(getFileHelper());
+        binder.bind(IDriverExtension.class).toInstance(getDriverExtension());
     } 
 }

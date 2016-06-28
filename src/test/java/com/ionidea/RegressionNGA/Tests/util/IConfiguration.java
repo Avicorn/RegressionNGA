@@ -17,5 +17,11 @@ public interface IConfiguration {
    String getOutputPath();
    
    String getProperty(String name) throws IOException;
+   int getPropertyAsInt(String name) throws NumberFormatException, IOException;
+   long getPropertyAsLong(String name) throws NumberFormatException, IOException;
+   
+   int getStandartWaitTime() throws NumberFormatException, IOException;
+   
+   
    Capabilities getCapabilities() throws IOException;
 }

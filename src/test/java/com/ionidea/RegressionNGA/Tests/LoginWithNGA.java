@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.ionidea.RegressionNGA.Tests.pages.HomePage;
+import com.ionidea.RegressionNGA.Tests.pages.ExamplePage;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +21,8 @@ public class LoginWithNGA extends TestNgTestBase {
   @BeforeMethod
   public void initPageObjects() {
     signIn = PageFactory.initElements(driver, SignIn.class);
+    signIn.Initialize(m_config);
+
     pageHeader = PageFactory.initElements(driver, PageHeader.class);
   }
 
@@ -31,7 +33,7 @@ public class LoginWithNGA extends TestNgTestBase {
     driver.get(m_baseUrl);
     
     Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
+    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();
@@ -55,7 +57,7 @@ public class LoginWithNGA extends TestNgTestBase {
     driver.get(m_baseUrl);
           
     Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, 30); //seconds
+    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime); //seconds
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();
@@ -68,8 +70,6 @@ public class LoginWithNGA extends TestNgTestBase {
     action.click(signIn.ngaLoginButton).build().perform();
     
     //correct user incorrect password negative case
-    //TODO: figure out how to read properties from pom.xml
-    //NOTE: add desired property inside <profile> section as on of <properties>, to application.properties, to TestNgTestBase and read it inside it in initTestSuite method.
     signIn.SignInWithNGA(driver, m_ngaUserLogin, "totallyrandomtext");
     //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     Assert.assertTrue(driver.getPageSource().contains("User name and password do not match"));
