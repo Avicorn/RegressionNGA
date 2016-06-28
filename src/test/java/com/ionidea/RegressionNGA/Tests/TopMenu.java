@@ -2,21 +2,15 @@ package com.ionidea.RegressionNGA.Tests;
 
 import com.ionidea.RegressionNGA.Tests.pages.Common.PageHeader;
 import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
-import static java.lang.Math.random;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.PageFactory;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Guice;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -44,84 +38,25 @@ public class TopMenu extends TestNgTestBase {
     @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'ARTISTS')]")
     private WebElement artists;
     
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'About Learning Resources')]")
+    private WebElement aboutLearningResources;
+    
      /*
         1. Open landing page
         2. Compare target menuitem text with expected one.
-        3. Try to click on it in two ways, by in menu name and by order number
+        3. Try to click on it index
         This helps to make sure menu order is fine.
         4. Compare Title, URL and <H2> value on new page with desired 
         This helps to make sure menuitem linked to correct page.
     
-        In case any of above fails - all test is failed.
+        In case any of above fails - test is considered failed.
     */
     
-/*    
     // Collection menu group
     @Test
     public void menuGroupCollection() throws NotImplementedException {
-        driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
-        
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(0).findElement(By.tagName("a")).getText(), "Collection");
-        
-        pageHeader.getMainMenuElement(0).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        Assert.assertTrue("The Collection".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("The Collection".equals(driver.findElement(By.tagName("h2")).getText()));
-    }
-/*    
-    @Test
-    public void menuGroupCollectionHighlights() throws NotImplementedException {
-        driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
-        
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,0))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(0,0).findElement(By.tagName("a")).getText(), "Highlights");
-        
-        pageHeader.getMainMenuElement(0,0).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        Assert.assertTrue("Highlights".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/highlights.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Highlights".equals(driver.findElement(By.tagName("h2")).getText()));
-    } 
-    
-    
-    @Test
-    public void menuGroupCollectionCollectionSearchs() throws NotImplementedException {
-        driver.get(m_baseUrl);
-        
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
-        wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.tagName("html"))));
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,1))));
-
-        Assert.assertEquals(pageHeader.getMainMenuElement(0,1).findElement(By.tagName("a")).getText(), "Search the Collection");
-        
-        pageHeader.getMainMenuElement(0,1).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        Assert.assertTrue("Collection Search".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/collection-search.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Search the Collection".equals(driver.findElement(By.tagName("h2")).getText()));
-    }
-*/
-
-   
-    @Test
-    public void menuGroupCollection() throws NotImplementedException {
-        driver.get(m_baseUrl);
-        
-        
+        driver.get(m_baseUrl);        
+        //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0);
         WebElement aElement = liElement.findElement(By.tagName("a"));
                
@@ -129,157 +64,333 @@ public class TopMenu extends TestNgTestBase {
         
         aElement.click();
         
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("The Collection".equals(driver.getTitle()));
-        Assert.assertTrue("The Collection".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/Collection.html");
+        Assert.assertEquals(driver.getTitle(),"The Collection");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(), "The Collection");
     }
-    
     
     @Test
     public void menuGroupCollectionHighlights() throws NotImplementedException, InterruptedException {
         driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,0);
         WebElement aElement = liElement.findElement(By.tagName("a"));
-
 
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Highlights");
 
         aElement.click();
 
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/highlights.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Highlights".equals(driver.getTitle()));
-        Assert.assertTrue("Highlights".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/Collection/highlights.html");
+        Assert.assertEquals(driver.getTitle(), "Highlights");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Highlights");
+    }
+  
+    @Test
+    public void menuGroupCollectionCollectionSearchs() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(0,1);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Search the Collection");
+
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/Collection/collection-search.html");
+        Assert.assertEquals(driver.getTitle(),"Collection Search");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Search the Collection");
     }
 
     @Test
     public void menuGroupCollectionArtists() throws NotImplementedException, InterruptedException {
         driver.get(m_baseUrl);
-         
+        //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,2);
         WebElement aElement = liElement.findElement(By.tagName("a"));
                
-        
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Artists");
         
         aElement.click();
 
-        //wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/artists.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Artists".equals(driver.getTitle()));
-
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/Collection/artists.html");
+        Assert.assertEquals(driver.getTitle(),"Artists");
         //in this particular case target h2 isn't the first in the DOM
-
-        //Assert.assertTrue(artists.isDisplayed());
+        Assert.assertTrue(artists.isDisplayed());
     }
 
-    
-  
-//    @Test
-//    public void menuGroupCollectionArtists() throws NotImplementedException {
-//        driver.get(m_baseUrl);
-//        
-//        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-//        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
-//        
-//        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-//        
-//        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(0,2))));
-//        
-//        Assert.assertEquals(pageHeader.getMainMenuElement(0,2).findElement(By.tagName("a")).getText(), "Artists");
-//        
-//        pageHeader.getMainMenuElement(0,2).click();
-//        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-//        
-//        Assert.assertTrue("Artists".equals(driver.getTitle()));
-//        Assert.assertTrue("http://www.nga.gov/content/ngaweb/Collection/artists.html".equals(driver.getCurrentUrl()));
-//        //in this particular case target h2 isn't the first in the DOM
-//        Assert.assertTrue(artists.isDisplayed());
-//    }
+    @Test
+    public void menuGroupCollectionRecentAcquisitions() throws NotImplementedException, InterruptedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(0,3);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+               
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Recent Acquisitions");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/Collection/recent_acquisitions.html");
+        Assert.assertEquals(driver.getTitle(),"Recent Acquisitions");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Recent Acquisitions");
+    }
     
     // Exhibitions menu group
     @Test
     public void menuGroupExhibitions() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(1);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(1))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(1).findElement(By.tagName("a")).getText(), "Exhibitions");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Exhibitions");
         
-        pageHeader.getMainMenuElement(1).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("Exhibitions".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/exhibitions.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Current Exhibitions".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/exhibitions.html");
+        Assert.assertEquals(driver.getTitle(),"Exhibitions");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Current Exhibitions");
     }
     
+    @Test
+    public void menuGroupExhibitionsCurrent() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(1,0);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Current");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/exhibitions/current.html");
+        Assert.assertEquals(driver.getTitle(),"Current");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Current Exhibitions and Installations");
+    }
+  
+    @Test
+    public void menuGroupExhibitionsUpcoming() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(1,1);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Upcoming");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/exhibitions/upcoming.html");
+        Assert.assertEquals(driver.getTitle(),"Upcoming");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Upcoming Exhibitions");
+    }    
+
+    @Test
+    public void menuGroupExhibitionsOnTour() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(1,2);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "On Tour");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/exhibitions/ontour.html");
+        Assert.assertEquals(driver.getTitle(),"On Tour");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Exhibitions On Tour");
+    }     
+
+    @Test
+    public void menuGroupExhibitionsPast() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(1,3);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Past");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/exhibitions/past.html");
+        Assert.assertEquals(driver.getTitle(),"Past");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Past Exhibitions");
+    }    
+    
+    // Education menu group
     @Test
     public void menuGroupEducation() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(2))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(2).findElement(By.tagName("a")).getText(), "Education");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Education");
         
-        pageHeader.getMainMenuElement(2).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("Education".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/education.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Education".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education.html");
+        Assert.assertEquals(driver.getTitle(),"Education");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Education");
     }
+
+    @Test
+    public void menuGroupEducationTeachers() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,0);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Teachers");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/teachers.html");
+        Assert.assertEquals(driver.getTitle(),"Teachers");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Teachers");
+    }
+
+    @Test
+    public void menuGroupEducationFamilies() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,1);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Families");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/families.html");
+        Assert.assertEquals(driver.getTitle(),"Families");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Families");
+    }    
+
+    @Test
+    public void menuGroupEducationNGAkids() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,2);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "NGAkids");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/kids.html");
+        Assert.assertEquals(driver.getTitle(),"NGAkids Art Zone");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"NGAkids Art Zone");
+    }    
+ 
+    @Test
+    public void menuGroupEducationTeens() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,3);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Teens");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/teens.html");
+        Assert.assertEquals(driver.getTitle(),"Teens");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Teens");
+    }      
+  
+    @Test
+    public void menuGroupEducationAdults() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,4);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Adults");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/adults.html");
+        Assert.assertEquals(driver.getTitle(),"Adults");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Adults");
+    }    
+
+    @Test
+    public void menuGroupEducationInternsAndFellows() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,5);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Interns and Fellows");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/education/interns-fellows.html");
+        Assert.assertEquals(driver.getTitle(),"Interns & Fellows");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Interns & Fellows");
+    }     
+
+    @Test
+    public void menuGroupEducationInternsLearningResources() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(2,6);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Learning Resources");
+        
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(), "http://www.nga.gov/content/ngaweb/education/learningresources.html");
+        Assert.assertEquals(driver.getTitle(), "About Learning Resources");
+        //in this particular case target h2 isn't the first in the DOM
+        Assert.assertTrue(aboutLearningResources.isDisplayed());
+    }    
     
+    // Conservation menu group
     @Test
     public void menuGroupConservation() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(3);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(3))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(3).findElement(By.tagName("a")).getText(), "Conservation");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Conservation");
         
-        pageHeader.getMainMenuElement(3).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("Conservation".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/conservation.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Conservation".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/conservation.html");
+        Assert.assertEquals(driver.getTitle(),"Conservation");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Conservation");
     }
     
     @Test
     public void menuGroupResearch() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(4);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(4))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(4).findElement(By.tagName("a")).getText(), "Research");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Research");
         
-        pageHeader.getMainMenuElement(4).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/research.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Research".equals(driver.getTitle()));
-        Assert.assertTrue("Research".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/research.html");
+        Assert.assertEquals(driver.getTitle(),"Research");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Research");
     }
     
     @Test
     public void menuGroupCalendar() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(5);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(5))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(5).findElement(By.tagName("a")).getText(), "Calendar");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Calendar");
         
-        pageHeader.getMainMenuElement(5).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("Calendar".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/calendar.html".equals(driver.getCurrentUrl()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/calendar.html");
+        Assert.assertEquals(driver.getTitle(),"Calendar");
         //in this particular case target h2 isn't the first in the DOM
         Assert.assertTrue(calendarHeader.isDisplayed());
     }
@@ -287,52 +398,48 @@ public class TopMenu extends TestNgTestBase {
     @Test
     public void menuGroupVisit() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(6);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(6))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(6).findElement(By.tagName("a")).getText(), "Visit");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Visit");
         
-        pageHeader.getMainMenuElement(6).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("Visit".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/visit.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Visit".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/visit.html");
+        Assert.assertEquals(driver.getTitle(),"Visit");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Visit");
     }      
     
     @Test
     public void menuGroupSupport() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(7);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(7))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(7).findElement(By.tagName("a")).getText(), "Support");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Support");
+                
+        aElement.click();
         
-        pageHeader.getMainMenuElement(7).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
-        
-        Assert.assertTrue("Support Us".equals(driver.getTitle()));
-        Assert.assertTrue("http://www.nga.gov/content/ngaweb/support.html".equals(driver.getCurrentUrl()));
-        Assert.assertTrue("Support Us".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"http://www.nga.gov/content/ngaweb/support.html");        
+        Assert.assertEquals(driver.getTitle(),"Support Us");
+        Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Support Us");
     }
     
     @Test
     public void menuGroupShop() throws NotImplementedException {
         driver.get(m_baseUrl);
-        m_driverExtension.waitForPageLoaded(driver, m_standartWaitTime);
-        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
         
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pageHeader.getMainMenuElement(8))));
-        Assert.assertEquals(pageHeader.getMainMenuElement(8).findElement(By.tagName("a")).getText(), "Shop");
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Shop");
         
-        pageHeader.getMainMenuElement(8).click();
-        wait.until(ExpectedConditions.not(ExpectedConditions.titleIs("Connecting...")));
+        aElement.click();
         
-        Assert.assertTrue("National Gallery of Art Shops | Fine Museum Gifts | shop.nga.gov".equals(driver.getTitle()));
-        Assert.assertTrue("https://shop.nga.gov/".equals(driver.getCurrentUrl()));
-        //Assert.assertTrue("Support Us".equals(driver.findElement(By.tagName("h2")).getText()));
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/");
+        Assert.assertEquals(driver.getTitle(),"National Gallery of Art Shops | Fine Museum Gifts | shop.nga.gov");
     }
 
 }

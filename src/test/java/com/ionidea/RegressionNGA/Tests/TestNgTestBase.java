@@ -28,6 +28,7 @@ import com.ionidea.RegressionNGA.Tests.util.IFileHelper;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.Dimension;
@@ -67,7 +68,6 @@ public class TestNgTestBase {
 
     @BeforeSuite
     public void initTestSuite() {
-
         try {
             m_baseUrl = m_config.getProperty("site.url");
             m_gridHubUrl = m_config.getProperty("grid.url");
@@ -77,7 +77,7 @@ public class TestNgTestBase {
             m_capabilities = m_config.getCapabilities();
         } catch (IOException ex) {
             Logger.getLogger(TestNgTestBase.class.getName()).log(Level.SEVERE, null, ex);
-
+            ex.printStackTrace();
             System.exit(1);
         }
         
@@ -96,11 +96,16 @@ public class TestNgTestBase {
         }
 
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+        System.out.println("driver.manage().timeouts() is set to " + m_standartWaitTime);
     }
 
     @BeforeMethod
     public void initWebDriver() throws IOException {
         driver = WebDriverFactory.getDriver(m_gridHubUrl, m_capabilities);
+        driver.manage().timeouts().implicitlyWait(m_standartWaitTime, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
+        
         //TODO: move this to config for test suit, so that it would be possible to run suit with diff dims
         driver.manage().window().setSize(new Dimension(1024 + 50, 768));
     }
@@ -112,7 +117,9 @@ public class TestNgTestBase {
             System.out.println("Test failed " + testResult.getName());
             m_fileHelper.insurePathExists(m_config.getOutputPath());
 
-//TODO: modify folder/files naming strategy to incorporate getTestName() for test classes with lots of tests inside
+//TODO: modify folder/files naming strategy to incorporate getTestName()
+//for test classes with lots of tests inside
+            
             //screenshot
             byte[] screenshootBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             String onFailureFilePath = m_config.getOutputPath() + m_fileHelper.getNewFileName(this.getClass(), ".jpg");

@@ -13,7 +13,7 @@ import org.openqa.selenium.support.How;
 public class ExamplePage extends Page {
 
     @FindBy(how = How.TAG_NAME, using = "h1")
-    @CacheLookup
+    @CacheLookup //cachelookup stores elements having @cachelookup annotation applied over it for further reference with out new search in DOM
     public WebElement header;
 
     public ExamplePage(WebDriver webDriver) {

@@ -33,7 +33,7 @@ public class LoginWithNGA extends TestNgTestBase {
     driver.get(m_baseUrl);
     
     Actions action = new Actions(driver);
-    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime); //seconds
+    WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);
     
     wait.until(ExpectedConditions.visibilityOf(pageHeader.ngaFavoritesLink));
     pageHeader.ngaFavoritesLink.click();
@@ -70,8 +70,6 @@ public class LoginWithNGA extends TestNgTestBase {
     action.click(signIn.ngaLoginButton).build().perform();
     
     //correct user incorrect password negative case
-    //TODO: figure out how to read properties from pom.xml
-    //NOTE: add desired property inside <profile> section as on of <properties>, to application.properties, to TestNgTestBase and read it inside it in initTestSuite method.
     signIn.SignInWithNGA(driver, m_ngaUserLogin, "totallyrandomtext");
     //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     Assert.assertTrue(driver.getPageSource().contains("User name and password do not match"));

@@ -38,15 +38,11 @@ public class PageHeader extends Page {
     public final String CNST_XPATH_MENU_DESKTOP = "//*[@id='wrapper']/*[@id='header-wrap']/*[@id='header']/ul[@id='mainnav']";
     public final String CNST_XPATH_MENU_GROUP_DESKTOP = CNST_XPATH_MENU_DESKTOP + "/li[{{group-index}}]";
     public final String CNST_XPATH_MENU_ITEM_DESKTOP = "ul/li[{{item-index}}]";
-    
-    
-//    @FindBy(how = How.XPATH, using = "//*[@id='mainnav']/li/a[contains(text(),'Collection')]")
-//    public WebElement ngaMenuLink;
+     
     @FindBy(how = How.TAG_NAME, using = "h1")
     public WebElement header;
 
     @FindBy(how = How.XPATH, using = "//*[@id='header']/h1/a[contains(text(),'National Gallery of Art')]")
-    //@CacheLookup //Now what cachelookup does is it stores elements having @cachelookup annotation applied over it and then stores this element for further reference/s.
     public WebElement ngaHomeLink;
 
     @FindBy(how = How.XPATH, using = "//*[@id='nga-your-favorites-link']")
@@ -55,10 +51,6 @@ public class PageHeader extends Page {
     @FindBy(id = "///*[@id='userSignOutLink']")
     public WebElement userSignOutLink;
 
-    public PageHeader(WebDriver driver) {
-        super(driver);
-    }
-    
     public boolean IsMobile() {
         //TODO: add actual value
         return driver.manage().window().getSize().width < 0;
@@ -147,5 +139,9 @@ public class PageHeader extends Page {
         
         new WebDriverWait(driver, m_standartWaitTime)
                 .until(ExpectedConditions.attributeContains(menuItemLocator, "class", "set"));
+    }
+    
+    public PageHeader(WebDriver driver) {
+        super(driver);
     }
 }
