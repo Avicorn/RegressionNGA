@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 /**
  * Sample page
  */
-public class CollectionSearch extends Page {
+public class CollectionSearchPage extends Page {
 
   
     @FindBy(how = How.ID, using = "artist")
@@ -28,50 +28,50 @@ public class CollectionSearch extends Page {
 
     
     @FindBy(how = How.ID, using = "keyword")
-    public WebElement KeywordsInObjectInformationTextInput;
+    public WebElement keywordsInObjectInformationTextInput;
     
     @FindBy(how = How.XPATH, using = "//input[@id='keyword']/following-sibling::input[@name='search']")
-    public WebElement KeywordsInObjectInformationSearchButton;
+    public WebElement keywordsInObjectInformationSearchButton;
 
     @FindBy(how = How.ID, using = "credit")
-    public WebElement CreditLineTextInput;
+    public WebElement creditLineTextInput;
     
     @FindBy(how = How.XPATH, using = "//input[@id='credit']/following-sibling::input[@name='search']")
-    public WebElement CreditLineSearchButton;
+    public WebElement creditLineSearchButton;
     
     @FindBy(how = How.ID, using = "provenance")
-    public WebElement ProvenanceNameTextInput;
+    public WebElement provenanceNameTextInput;
     
     @FindBy(how = How.ID, using = "provenanceSearch")
-    public WebElement ProvenanceNameSearchButton;
+    public WebElement provenanceNameSearchButton;
     
     @FindBy(how = How.ID, using = "accession")
-    public WebElement AccessionNumberTextInput;
+    public WebElement accessionNumberTextInput;
     
     @FindBy(how = How.XPATH, using = "//input[@id='accession']/following-sibling::input[@name='search']")
-    public WebElement AccessionNumberSearchButton;
+    public WebElement accessionNumberSearchButton;
     
     @FindBy(how = How.ID, using = "exhistory")
-    public WebElement ExhibitionHistoryTextInput;
+    public WebElement exhibitionHistoryTextInput;
     
     @FindBy(how = How.XPATH, using = "//input[@id='exhistory']/following-sibling::input[@name='search']")
-    public WebElement ExhibitionHistorySearchButton;    
+    public WebElement exhibitionHistorySearchButton;    
 
     @FindBy(how = How.ID, using = "catalogue")
-    public WebElement CatalogueRaisonneTextInput;
+    public WebElement catalogueRaisonneTextInput;
     
     @FindBy(how = How.XPATH, using = "//input[@id='catalogue']/following-sibling::input[@name='search']")
-    public WebElement CatalogueRaisonneSearchButton;    
+    public WebElement catalogueRaisonneSearchButton;    
 
     
     
     @FindBy(how = How.ID, using = "s2id_oe-catalogues")
-    public WebElement OnlineEditionsSelect;
+    public WebElement onlineEditionsSelect;
     
     
     
     @FindBy(how = How.ID, using = "oe-search-submit")
-    public WebElement OnlineEditionsSearchButton;       
+    public WebElement onlineEdiitonsSearchButton;       
 
 
     
@@ -81,7 +81,7 @@ public class CollectionSearch extends Page {
 
     }
   
-    public CollectionSearch(WebDriver driver) {
+    public CollectionSearchPage(WebDriver driver) {
         super(driver);
     }
     

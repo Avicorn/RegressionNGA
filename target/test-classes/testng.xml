@@ -3,8 +3,9 @@
 <suite name="Tests" verbose="1">
     <test name="RegressionNGA">
         <classes>
-            <class name="com.ionidea.RegressionNGA.Tests.LoginWithNGA"/>
-            <class name="com.ionidea.RegressionNGA.Tests.TopMenu"/>
+            <class name="com.ionidea.RegressionNGA.Tests.LoginWithNGATest"/>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest"/>
+            <class name="com.ionidea.RegressionNGA.Tests.CollectionSeachTest"/>
             <!--    
             <class name="com.ionidea.RegressionNGA.Tests.TopMenu">
                 <methods>

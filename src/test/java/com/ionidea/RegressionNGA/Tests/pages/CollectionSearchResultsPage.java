@@ -11,7 +11,7 @@ import org.openqa.selenium.support.How;
 /**
  * Sample page
  */
-public class CollectionSearchResults extends Page {
+public class CollectionSearchResultsPage extends Page {
 
   
 //    @FindBy(how = How.ID, using = "artist")
@@ -40,7 +40,7 @@ public class CollectionSearchResults extends Page {
         return webDriver.findElements(By.xpath("//div[@class='results-filters']/ul[@class='filters-list']/li[@class='term']/span"));
     }    
     
-    public CollectionSearchResults(WebDriver driver) {
+    public CollectionSearchResultsPage(WebDriver driver) {
         super(driver);
     }
     

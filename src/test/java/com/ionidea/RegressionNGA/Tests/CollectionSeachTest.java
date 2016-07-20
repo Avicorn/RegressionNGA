@@ -1,7 +1,7 @@
 package com.ionidea.RegressionNGA.Tests;
 
-import com.ionidea.RegressionNGA.Tests.pages.CollectionSearch;
-import com.ionidea.RegressionNGA.Tests.pages.CollectionSearchResults;
+import com.ionidea.RegressionNGA.Tests.pages.CollectionSearchPage;
+import com.ionidea.RegressionNGA.Tests.pages.CollectionSearchResultsPage;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -11,16 +11,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CollectionSeachTest extends TestNgTestBase {
-    String SearchTerm = "Red"; //TODO Find a way to store test data outside the test to make tests "data-driven"
-    private CollectionSearch collectionSearch;
-    private CollectionSearchResults collectionSearchResults;
+    private String SearchTerm = "Red"; //TODO Find a way to store test data outside the test to make tests "data-driven"
+    
+    private CollectionSearchPage collectionSearch;
+    private CollectionSearchResultsPage collectionSearchResults;
 
     @BeforeMethod
     public void initPageObjects() {
-        collectionSearch = PageFactory.initElements(driver, CollectionSearch.class);
+        collectionSearch = PageFactory.initElements(driver, CollectionSearchPage.class);
         collectionSearch.Initialize(m_config);
         
-        collectionSearchResults = PageFactory.initElements(driver, CollectionSearchResults.class);
+        collectionSearchResults = PageFactory.initElements(driver, CollectionSearchResultsPage.class);
         collectionSearch.Initialize(m_config);
 
     }
@@ -96,4 +97,102 @@ public class CollectionSeachTest extends TestNgTestBase {
         //Verify number of results is > 0
         Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
     }    
+    
+    
+    
+    
+    
+    
+    // Verify Collection search on Key words in object information, on simple data, letters and digits only.
+    @Test
+    public void testCollectionSearchByKeyWordsInObjectInformation() {
+        driver.get(m_baseUrl + collectionSearch.pageURL);
+        //Enter Search term in to target field
+        collectionSearch.keywordsInObjectInformationTextInput.sendKeys(SearchTerm); 
+        collectionSearch.keywordsInObjectInformationSearchButton.click();
+        //Verify collection-search-result page opened
+        Assert.assertTrue(driver.getCurrentUrl().contains(m_baseUrl + collectionSearchResults.pageURL)); 
+        //Verify Search term is present as a part of the page URL
+        Assert.assertTrue(driver.getCurrentUrl().contains(SearchTerm)); 
+        //Verify Search term is present as a search filter
+        WebElement firstSearchTerm = collectionSearchResults.SearchTerms(driver).get(0);
+        Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
+        //Verify number of results is > 0
+        Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+    }
+    
+    // Verify Collection search on Credit Line, on simple data, letters and digits only.
+    @Test
+    public void testCollectionSearchByCreditLine() {
+        driver.get(m_baseUrl + collectionSearch.pageURL);
+        //Enter Search term in to target field
+        collectionSearch.creditLineTextInput.sendKeys(SearchTerm); 
+        collectionSearch.creditLineSearchButton.click();
+        //Verify collection-search-result page opened
+        Assert.assertTrue(driver.getCurrentUrl().contains(m_baseUrl + collectionSearchResults.pageURL)); 
+        //Verify Search term is present as a part of the page URL
+        Assert.assertTrue(driver.getCurrentUrl().contains(SearchTerm)); 
+        //Verify Search term is present as a search filter
+        WebElement firstSearchTerm = collectionSearchResults.SearchTerms(driver).get(0);
+        Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
+        //Verify number of results is > 0
+        Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+    } 
+    
+    // Verify Collection search on Accession number.
+    @Test
+    public void testCollectionSearchByAccessionNumber() {
+        String SearchTerm = "2010.1";
+        
+        driver.get(m_baseUrl + collectionSearch.pageURL);
+        //Enter Search term in to target field
+        collectionSearch.accessionNumberTextInput.sendKeys(SearchTerm); 
+        collectionSearch.accessionNumberSearchButton.click();
+        //Verify collection-search-result page opened
+        Assert.assertTrue(driver.getCurrentUrl().contains(m_baseUrl + collectionSearchResults.pageURL)); 
+        //Verify Search term is present as a part of the page URL
+        Assert.assertTrue(driver.getCurrentUrl().contains(SearchTerm)); 
+        //Verify Search term is present as a search filter
+        WebElement firstSearchTerm = collectionSearchResults.SearchTerms(driver).get(0);
+        Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
+        //Verify number of results is > 0
+        Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+    }
+
+    // Verify Collection search on Exhibition history.
+    @Test
+    public void testCollectionSearchByExhibitionHistory() {
+        driver.get(m_baseUrl + collectionSearch.pageURL);
+        //Enter Search term in to target field
+        collectionSearch.exhibitionHistoryTextInput.sendKeys(SearchTerm); 
+        collectionSearch.exhibitionHistorySearchButton.click();
+        //Verify collection-search-result page opened
+        Assert.assertTrue(driver.getCurrentUrl().contains(m_baseUrl + collectionSearchResults.pageURL)); 
+        //Verify Search term is present as a part of the page URL
+        Assert.assertTrue(driver.getCurrentUrl().contains(SearchTerm)); 
+        //Verify Search term is present as a search filter
+        WebElement firstSearchTerm = collectionSearchResults.SearchTerms(driver).get(0);
+        Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
+        //Verify number of results is > 0
+        Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+    }     
+    
+    // Verify Collection search on Catalogue raisonne.
+    @Test
+    public void testCollectionSearchByCatalogueRaisonne() {
+        String SearchTerm = "Rembrandt";
+        driver.get(m_baseUrl + collectionSearch.pageURL);
+        //Enter Search term in to target field
+        collectionSearch.catalogueRaisonneTextInput.sendKeys(SearchTerm); 
+        collectionSearch.catalogueRaisonneSearchButton.click();
+        //Verify collection-search-result page opened
+        Assert.assertTrue(driver.getCurrentUrl().contains(m_baseUrl + collectionSearchResults.pageURL)); 
+        //Verify Search term is present as a part of the page URL
+        Assert.assertTrue(driver.getCurrentUrl().contains(SearchTerm)); 
+        //Verify Search term is present as a search filter
+        WebElement firstSearchTerm = collectionSearchResults.SearchTerms(driver).get(0);
+        Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
+        //Verify number of results is > 0
+        Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+    }
 }
