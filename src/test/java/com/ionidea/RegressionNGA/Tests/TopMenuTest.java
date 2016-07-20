@@ -108,6 +108,17 @@ public class TopMenuTest extends TestNgTestBase {
     
         In case any of above fails - test is considered failed.
     */
+
+    // NGA Home
+    @Test
+    public void ngaHomeLink() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        Assert.assertEquals("National Gallery of Art", pageHeader.ngaHomeLink.getText());
+        pageHeader.ngaHomeLink.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(), "http://www.nga.gov/content/ngaweb.html");
+        Assert.assertEquals(driver.getTitle(), "National Gallery of Art");
+    }
     
     // Collection menu group
     @Test
