@@ -13,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginWithNGA extends TestNgTestBase {
+public class LoginWithNGATest extends TestNgTestBase {
 
   private SignIn signIn;
   private PageHeader pageHeader;

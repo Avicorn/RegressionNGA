@@ -19,7 +19,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * @author Avicorn
  */
 @Guice(modules = GlobalCommonModule.class)
-public class TopMenu extends TestNgTestBase {
+public class TopMenuTest extends TestNgTestBase {
     
     private PageHeader pageHeader;
     

@@ -148,7 +148,7 @@
         <profile>
             <id>localhost</id>
             <properties>
-                <site.url>http://www.nga.gov/</site.url>
+                <site.url>http://www.nga.gov</site.url>
                 <ngaUserLogin>a-forostovsky@nga.gov</ngaUserLogin>
                 <ngaUserPassword>Asd12345</ngaUserPassword>
                 <standartWaitTime>5</standartWaitTime>
