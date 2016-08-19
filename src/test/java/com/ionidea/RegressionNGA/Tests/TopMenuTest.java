@@ -1045,4 +1045,132 @@ public class TopMenuTest extends TestNgTestBase {
         Assert.assertEquals(driver.getTitle(),"National Gallery of Art Shops | Fine Museum Gifts | shop.nga.gov");
     }
 
+    @Test
+    public void menuGroupShopExhibitions() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,0);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Exhibitions");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/1000/exhibitions/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Exhibitions | National Gallery of Art Shops | shop.nga.gov");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+    
+    @Test
+    public void menuGroupShopBooksAndMedia() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,1);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Books & Media");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/2000/books-media/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Books & Media | National Gallery of Art Shops | shop.nga.gov");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+
+    @Test
+    public void menuGroupShopStationery() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,2);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Stationery");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/3000/stationery/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Stationery - National Gallery of Art Shops");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+
+    @Test
+    public void menuGroupShopJewelry() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,3);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Jewelry");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/4000/jewelry/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Jewelry | National Gallery of Art Shops | shop.nga.gov");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }    
+    
+    @Test
+    public void menuGroupShopPrints() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,4);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Prints");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/5000/prints/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Prints - National Gallery of Art Shops");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+    
+    @Test
+    public void menuGroupShopApparel() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,5);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Apparel");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/6000/apparel/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Apparel | National Gallery of Art Shops | shop.nga.gov");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }   
+    
+    @Test
+    public void menuGroupShopForTheHome() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,6);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "For the Home");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/7000/for-the-home/1.html");        
+        Assert.assertEquals(driver.getTitle(),"For the Home | National Gallery of Art Shops | shop.nga.gov");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+    
+    @Test
+    public void menuGroupShopKids() throws NotImplementedException {
+        driver.get(m_baseUrl);
+        //mouseover on menuitem to make it visible
+        WebElement liElement = pageHeader.getMainMenuElement(8,7);
+        WebElement aElement = liElement.findElement(By.tagName("a"));
+        
+        Assert.assertEquals(m_driverExtension.getElementText(aElement), "Kids");
+                
+        aElement.click();
+        
+        Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/10000/kids/1.html");        
+        Assert.assertEquals(driver.getTitle(),"Kids - National Gallery of Art Shops");
+        //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
+    }
+    
 }
