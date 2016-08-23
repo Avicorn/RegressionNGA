@@ -16,12 +16,23 @@ import org.openqa.selenium.support.How;
  */
 public class ArtistInformationPage extends Page{
     
+    /**
+     * Constructor of the  class
+     * @param driver 
+     */
     public ArtistInformationPage(WebDriver driver) {
         super(driver);
     }    
     
+    /**
+     * the URL of the page
+     */
     public String pageUrl="http://www.nga.gov/content/ngaweb/Collection/artist-info.2377.html";
-          
+     
+    
+    /**
+     * The Web Elements of the page
+     */
     @FindBy(how = How.XPATH, using = "(//a[contains(text(),'NGA Online Editions')])[3]")
     public WebElement onlineEditions;
     
@@ -70,8 +81,8 @@ public class ArtistInformationPage extends Page{
     @FindBy(how = How.XPATH, using ="//div[@id='biography']/p")
     public WebElement textBegin;
     
-    @FindBy(how = How.XPATH, using ="//div[@id='biography']/p[5]")
-    public WebElement textEnd;
+    @FindBy(how = How.XPATH, using ="//div[@id='biography']/p[6]")
+    public WebElement theAuthorName;
     
     @FindBy(how = How.XPATH, using ="//div[@id='biography']/p[7]")
     public WebElement dateOfArticle;
