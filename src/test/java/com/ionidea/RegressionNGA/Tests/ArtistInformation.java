@@ -9,6 +9,7 @@ package com.ionidea.RegressionNGA.Tests;
 import static com.ionidea.RegressionNGA.Tests.TestNgTestBase.m_standartWaitTime;
 import com.ionidea.RegressionNGA.Tests.pages.ArtistInformationPage;
 import static com.ionidea.RegressionNGA.Tests.util.CustomVerifications.assertElementIsPresent;
+import static com.ionidea.RegressionNGA.Tests.util.CustomVerifications.assertTextIsPresent;
 import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.support.PageFactory.initElements;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,10 +52,10 @@ public class ArtistInformation extends TestNgTestBase{
         assertElementIsPresent(driver, artistInformationPage.biographyLink);
         assertElementIsPresent(driver, artistInformationPage.worksOfArtLink);
         assertElementIsPresent(driver, artistInformationPage.artistBibliographyLink);
-        assertElementIsPresent(driver, artistInformationPage.biographyTitle);
-        assertElementIsPresent(driver, artistInformationPage.textBegin);
-        assertElementIsPresent(driver, artistInformationPage.textEnd);
-        assertElementIsPresent(driver, artistInformationPage.dateOfArticle);
+        assertTextIsPresent(driver, artistInformationPage.biographyTitle,"BIOGRAPHY");
+        assertTextIsPresent(driver, artistInformationPage.textBegin,"Nicolaes Berchem was one of the most popular and successful Italianate landscape painters of his day. Aside from views of Italy, his extensive oeuvre of paintings, drawings, and etchings consists of depictions of the hunt and biblical and mythological scenes. Born in Haarlem in 1620, Berchem received his early training under his father, the still-life painter Pieter Claesz (Dutch, 1596/1597 - 1660). Houbra­ken, however, enumerated other teachers, including Jan van Goyen (Dutch, 1596 - 1656), Claes Moeyaert (1591–1655), Pieter de Grebber (c. 1600–1652/1653), Jan Wils (c. 1600–1666), and, somewhat improbably, Berchem’s younger cousin Jan Baptist Weenix (1621–1660/1661).");
+        assertTextIsPresent(driver, artistInformationPage.theAuthorName,"Arthur K. Wheelock Jr.");
+        assertTextIsPresent(driver, artistInformationPage.dateOfArticle,"April 24, 2014");
   
     }
 }
