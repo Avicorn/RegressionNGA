@@ -30,4 +30,13 @@ public abstract interface CustomVerifications{
         System.out.println("The element  is found:"+element1.toString());
         return true;
     }
+    
+    public static boolean assertTextIsPresent(WebDriver driver, WebElement element2,String text){
+        WebDriverWait wait = new WebDriverWait(driver, 30000);    
+        wait.until(ExpectedConditions.visibilityOf(element2));
+        Assert.assertEquals(element2.getText(),text);     
+        System.out.println("The element  is found:"+element2.getText());;
+        return true;
+    }
+    
 }
