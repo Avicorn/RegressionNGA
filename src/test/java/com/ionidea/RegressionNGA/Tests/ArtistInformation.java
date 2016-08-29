@@ -5,15 +5,7 @@
  */
 package com.ionidea.RegressionNGA.Tests;
 
-
-import static com.ionidea.RegressionNGA.Tests.TestNgTestBase.m_standartWaitTime;
 import com.ionidea.RegressionNGA.Tests.pages.ArtistInformationPage;
-import static com.ionidea.RegressionNGA.Tests.util.CustomVerifications.assertElementIsPresent;
-import static com.ionidea.RegressionNGA.Tests.util.CustomVerifications.assertTextIsPresent;
-import java.util.concurrent.TimeUnit;
-import static org.openqa.selenium.support.PageFactory.initElements;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**

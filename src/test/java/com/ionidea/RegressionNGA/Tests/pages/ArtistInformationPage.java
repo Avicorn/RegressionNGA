@@ -89,7 +89,7 @@ public class ArtistInformationPage extends Page{
     
     @Override
     public String getUrl(){
-        return pageUrl;
+    return pageUrl;
     }
     
 

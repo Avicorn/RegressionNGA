@@ -5,21 +5,18 @@ import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
 import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 import com.ionidea.RegressionNGA.Tests.util.IDriverExtension;
 import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Capabilities;
-
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
-
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogType;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -32,18 +29,23 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 
 /**
  * Base class for TestNG-based test classes
  */
 @Guice(modules = GlobalCommonModule.class)
-public class TestNgTestBase {
+public class TestNgTestBase{
 
     @Inject
     protected IConfiguration m_config;
@@ -61,11 +63,15 @@ public class TestNgTestBase {
     protected static Capabilities m_capabilities;
 
     protected WebDriver driver;
+    
+ 
+   
 
     public void init() {
 
     }
-
+    
+    
     @BeforeSuite
     public void initTestSuite() {
         try {
@@ -75,6 +81,8 @@ public class TestNgTestBase {
             m_ngaUserPassword = m_config.getProperty("ngaUserPassword");
             m_standartWaitTime = Integer.valueOf(m_config.getProperty("standartWaitTime"));
             m_capabilities = m_config.getCapabilities();
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(TestNgTestBase.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
@@ -94,20 +102,25 @@ public class TestNgTestBase {
         if ("".equals(m_gridHubUrl)) {
             m_gridHubUrl = null;
         }
-
+  
         WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+        
+        
         System.out.println("driver.manage().timeouts() is set to " + m_standartWaitTime);
     }
-
+   
     @BeforeMethod
     public void initWebDriver() throws IOException {
         driver = WebDriverFactory.getDriver(m_gridHubUrl, m_capabilities);
+        
         driver.manage().timeouts().implicitlyWait(m_standartWaitTime, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
         
         //TODO: move this to config for test suit, so that it would be possible to run suit with diff dims
         driver.manage().window().setSize(new Dimension(1024 + 50, 768));
+        
+        
     }
 
     @AfterMethod
@@ -160,4 +173,24 @@ public class TestNgTestBase {
     public void tearDown() {
         WebDriverFactory.dismissAll();
     }
+    
+       
+    public static boolean assertElementIsPresent(WebDriver driver, WebElement element1){
+                
+        WebDriverWait wait = new WebDriverWait(driver, 30000);    
+        wait.until(ExpectedConditions.visibilityOf(element1));
+        Assert.assertTrue(element1.isDisplayed());       
+        System.out.println("The element  is found:"+element1.toString());
+        return true;
+    }
+    
+    public static boolean assertTextIsPresent(WebDriver driver, WebElement element2,String text){
+        WebDriverWait wait = new WebDriverWait(driver, 30000);    
+        wait.until(ExpectedConditions.visibilityOf(element2));
+        Assert.assertEquals(element2.getText(),text);     
+        System.out.println("The element  is found:"+element2.getText());;
+        return true;
+    }
+   
+    
 }
