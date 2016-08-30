@@ -1,5 +1,6 @@
 package com.ionidea.RegressionNGA.Tests;
 
+import static com.ionidea.RegressionNGA.Tests.TestNgTestBase.m_wait;
 import com.ionidea.RegressionNGA.Tests.pages.Common.PageHeader;
 import com.ionidea.RegressionNGA.Tests.util.GlobalCommonModule;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Guice;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -126,7 +128,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);        
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
                
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Collection");
         
@@ -142,7 +144,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
 
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Highlights");
 
@@ -158,7 +160,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Search the Collection");
 
@@ -174,7 +176,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
                
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Artists");
         
@@ -191,7 +193,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(0,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
                
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Recent Acquisitions");
         
@@ -208,7 +210,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Exhibitions");
         
@@ -224,7 +226,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(1,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Current");
         
@@ -240,7 +242,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(1,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Upcoming");
         
@@ -256,7 +258,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(1,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "On Tour");
         
@@ -272,7 +274,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(1,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Past");
         
@@ -289,7 +291,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Education");
         
@@ -305,7 +307,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Teachers");
         
@@ -321,7 +323,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Families");
         
@@ -337,7 +339,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "NGAkids");
         
@@ -353,7 +355,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Teens");
         
@@ -369,7 +371,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Adults");
         
@@ -385,7 +387,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Interns and Fellows");
         
@@ -401,7 +403,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(2,6);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Learning Resources");
         
@@ -419,7 +421,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Conservation");
         
@@ -435,7 +437,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(3,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Projects");
         
@@ -452,7 +454,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(3,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Publications");
         
@@ -469,7 +471,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(3,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Resources");
         
@@ -487,7 +489,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Research");
         
@@ -503,7 +505,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "CASVA");
         
@@ -519,7 +521,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Publications");
         
@@ -536,7 +538,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Make an Appointment");
         
@@ -552,7 +554,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Gallery Archives");
         
@@ -568,7 +570,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Library");
         
@@ -584,7 +586,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(4,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "NGA Online Editions");
         
@@ -602,7 +604,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Calendar");
         
@@ -619,7 +621,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Film Programs");
         
@@ -635,7 +637,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Concerts");
         
@@ -651,7 +653,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Jazz Programs");
         
@@ -667,7 +669,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Gallery Talks");
         
@@ -683,7 +685,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Lectures");
         
@@ -699,7 +701,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Guided Tours");
         
@@ -715,7 +717,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,6);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Family Activities");
         
@@ -731,7 +733,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(5,7);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Children and Teen Films");
         
@@ -748,7 +750,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Visit");
         
@@ -764,7 +766,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Maps & Hours");
         
@@ -780,7 +782,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Tours & Guides");
         
@@ -797,7 +799,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Accessibility");
         
@@ -814,7 +816,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Cafés");
         
@@ -831,7 +833,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Shops");
         
@@ -848,7 +850,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Museum Policies");
         
@@ -865,7 +867,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,6);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Ice Rink");
         
@@ -882,7 +884,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(6,7);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Copyist Program");
         
@@ -900,7 +902,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Support");
                 
@@ -916,7 +918,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Vital Partnerships");
                 
@@ -933,7 +935,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Membership");
                 
@@ -950,7 +952,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Major Giving");
                 
@@ -967,7 +969,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Planned Giving");
                 
@@ -984,7 +986,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Corporate Giving");
                 
@@ -1001,7 +1003,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Gifts of Art");
                 
@@ -1018,7 +1020,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(7,6);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Donate Now");
                 
@@ -1035,7 +1037,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Shop");
         
@@ -1050,7 +1052,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,0);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Exhibitions");
                 
@@ -1066,7 +1068,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,1);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Books & Media");
                 
@@ -1082,7 +1084,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,2);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Stationery");
                 
@@ -1098,7 +1100,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,3);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Jewelry");
                 
@@ -1114,7 +1116,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,4);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Prints");
                 
@@ -1130,7 +1132,7 @@ public class TopMenuTest extends TestNgTestBase {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,5);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Apparel");
                 
@@ -1147,6 +1149,7 @@ public class TopMenuTest extends TestNgTestBase {
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,6);
         WebElement aElement = liElement.findElement(By.tagName("a"));
+        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "For the Home");
                 
@@ -1155,14 +1158,15 @@ public class TopMenuTest extends TestNgTestBase {
         Assert.assertEquals(driver.getCurrentUrl(),"https://shop.nga.gov/category/7000/for-the-home/1.html");        
         Assert.assertEquals(driver.getTitle(),"For the Home | National Gallery of Art Shops | shop.nga.gov");
         //Assert.assertEquals(driver.findElement(By.tagName("h2")).getText(),"Donate Now");
-    }
+    } 
     
     @Test
     public void menuGroupShopKids() throws NotImplementedException {
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement = pageHeader.getMainMenuElement(8,7);
-        WebElement aElement = liElement.findElement(By.tagName("a"));
+        WebElement aElement = liElement.findElement(By.tagName("a"));        
+        m_wait.until(ExpectedConditions.attributeToBeNotEmpty(aElement, "textContent"));
         
         Assert.assertEquals(m_driverExtension.getElementText(aElement), "Kids");
                 

@@ -29,15 +29,20 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Base class for TestNG-based test classes
@@ -52,6 +57,8 @@ public class TestNgTestBase {
     @Inject
     protected IDriverExtension m_driverExtension;
 
+    protected static Wait m_wait;
+    
     protected static String m_gridHubUrl;
     protected static String m_baseUrl;
     protected static String m_ngaUserLogin;
@@ -59,6 +66,7 @@ public class TestNgTestBase {
     protected static int m_standartWaitTime;
     
     protected static Capabilities m_capabilities;
+    
 
     protected WebDriver driver;
 
@@ -106,8 +114,16 @@ public class TestNgTestBase {
         driver.manage().timeouts().pageLoadTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(m_standartWaitTime*5, TimeUnit.SECONDS);
         
+        m_wait = new FluentWait(driver) 
+            .withTimeout(m_standartWaitTime, SECONDS) 
+            .pollingEvery(1, SECONDS) 
+            .ignoring(NoSuchElementException.class);
+
         //TODO: move this to config for test suit, so that it would be possible to run suit with diff dims
         driver.manage().window().setSize(new Dimension(1024 + 50, 768));
+        
+
+
     }
 
     @AfterMethod
