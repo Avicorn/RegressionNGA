@@ -1,5 +1,6 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
+import com.ionidea.RegressionNGA.Tests.pages.Page;
 import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

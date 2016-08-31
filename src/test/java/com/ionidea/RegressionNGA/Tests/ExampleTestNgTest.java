@@ -1,12 +1,13 @@
 package com.ionidea.RegressionNGA.Tests;
 
+import com.ionidea.RegressionNGA.Tests.pages.ExamplePage;
 import org.openqa.selenium.support.PageFactory;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.ionidea.RegressionNGA.Tests.pages.ExamplePage;
+import com.ionidea.RegressionNGA.Tests.TestNgTestBase;
 
 public class ExampleTestNgTest extends TestNgTestBase {
 
@@ -15,7 +16,7 @@ public class ExampleTestNgTest extends TestNgTestBase {
   @BeforeMethod
   public void initPageObjects() {
     homepage = PageFactory.initElements(driver, ExamplePage.class);
-    homepage.Initialize(m_config);
+    homepage.initialize(m_config);
 
   }
 

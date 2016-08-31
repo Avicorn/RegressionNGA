@@ -30,6 +30,7 @@ public class ArtistInformation extends TestNgTestBase{
          * Verifies all web elements on the page
          @param - example of WebDriver
          @param - example of WebElement
+         @param - text for verifying
          */
         assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
         assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    

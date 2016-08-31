@@ -19,10 +19,10 @@ public class CollectionSeachTest extends TestNgTestBase {
     @BeforeMethod
     public void initPageObjects() {
         collectionSearch = PageFactory.initElements(driver, CollectionSearchPage.class);
-        collectionSearch.Initialize(m_config);
+        collectionSearch.initialize(m_config);
         
         collectionSearchResults = PageFactory.initElements(driver, CollectionSearchResultsPage.class);
-        collectionSearch.Initialize(m_config);
+        collectionSearch.initialize(m_config);
 
     }
 

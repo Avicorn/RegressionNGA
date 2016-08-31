@@ -174,7 +174,7 @@ public class TestNgTestBase{
         WebDriverFactory.dismissAll();
     }
     
-       
+    //Custom verification method - waits the element before check  
     public static boolean assertElementIsPresent(WebDriver driver, WebElement element1){
                 
         WebDriverWait wait = new WebDriverWait(driver, 30000);    
@@ -184,6 +184,7 @@ public class TestNgTestBase{
         return true;
     }
     
+    //Custom verification method - waits the element and verifies the text containing in the web element
     public static boolean assertTextIsPresent(WebDriver driver, WebElement element2,String text){
         WebDriverWait wait = new WebDriverWait(driver, 30000);    
         wait.until(ExpectedConditions.visibilityOf(element2));

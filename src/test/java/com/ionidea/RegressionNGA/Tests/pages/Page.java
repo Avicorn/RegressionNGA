@@ -1,14 +1,16 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
 import com.ionidea.RegressionNGA.Tests.TestNgTestBase;
-import com.ionidea.RegressionNGA.Tests.pages.Common.PageInitiator;
 import com.ionidea.RegressionNGA.Tests.util.IConfiguration;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 /**
@@ -24,7 +26,7 @@ public abstract class Page{
     protected static String m_ngaUserLogin;
     protected static String m_ngaUserPassword;
     protected static int m_standartWaitTime;
-    public String pageUrl = " ";
+    public String pageUrl;
     
 
     public Page(WebDriver driver) {
@@ -53,9 +55,19 @@ public abstract class Page{
     }
      
     public String getUrl(){
-        return pageUrl;
+        return this.pageUrl;
     }
     
+        //action perfoms manual selection of the main menu
+    public void selectMenuOption(WebElement menuIndex, WebElement subMenuIndex){
+        WebDriverWait wait = new WebDriverWait(driver, 30000);
+        Actions action = new Actions(driver);
+        action.moveToElement(menuIndex);
+        action.build().perform();
+        wait.until(ExpectedConditions.visibilityOf(subMenuIndex));
+        action.moveToElement(subMenuIndex);        
+        action.click().perform();
+    }
 
  
 
