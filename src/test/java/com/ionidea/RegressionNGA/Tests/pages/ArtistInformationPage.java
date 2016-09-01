@@ -14,7 +14,7 @@ import org.openqa.selenium.support.How;
  *
  * @author TestQA
  */
-public class ArtistInformationPage extends Page{
+public class ArtistInformationPage extends MainPage{
     
     /**
      * Constructor of the  class
@@ -27,7 +27,7 @@ public class ArtistInformationPage extends Page{
     /**
      * the URL of the page
      */
-    public String pageUrl="http://www.nga.gov/content/ngaweb/Collection/artist-info.2377.html";
+    public String pageUrl=m_baseUrl+"/content/ngaweb/Collection/artist-info.2377.html";
      
     
     /**

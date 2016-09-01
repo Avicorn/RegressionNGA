@@ -58,16 +58,7 @@ public abstract class Page{
         return this.pageUrl;
     }
     
-        //action perfoms manual selection of the main menu
-    public void selectMenuOption(WebElement menuIndex, WebElement subMenuIndex){
-        WebDriverWait wait = new WebDriverWait(driver, 30000);
-        Actions action = new Actions(driver);
-        action.moveToElement(menuIndex);
-        action.build().perform();
-        wait.until(ExpectedConditions.visibilityOf(subMenuIndex));
-        action.moveToElement(subMenuIndex);        
-        action.click().perform();
-    }
+
 
  
 

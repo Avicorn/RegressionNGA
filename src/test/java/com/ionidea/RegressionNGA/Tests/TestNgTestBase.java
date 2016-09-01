@@ -193,5 +193,22 @@ public class TestNgTestBase{
         return true;
     }
    
+            //action perfoms manual selection of the main menu
+    public void selectMenuOption(WebElement menuIndex, WebElement subMenuIndex) throws InterruptedException{
+        
+        WebDriverWait wait = new WebDriverWait(driver, 30000);
+        
+        //create new action
+        Actions action = new Actions(driver); 
+        wait.until(ExpectedConditions.elementToBeClickable(menuIndex));
+        Thread.sleep(5000);
+        //Open the main menu
+        action.moveToElement(menuIndex);        
+        action.build().perform();
+        //Select submenu
+        action.moveToElement(subMenuIndex);        
+        action.click().perform();
+       
+    }
     
 }
