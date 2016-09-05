@@ -75,8 +75,10 @@
             </plugin> 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>2.18.1</version>
                 <configuration>
+                <parallel>methods</parallel>
+                <threadCount>2</threadCount>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -151,7 +153,7 @@
                 <site.url>http://www.nga.gov</site.url>
                 <ngaUserLogin>a-forostovsky@nga.gov</ngaUserLogin>
                 <ngaUserPassword>Asd12345</ngaUserPassword>
-                <standartWaitTime>5</standartWaitTime>
+                <standartWaitTime>30</standartWaitTime>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
