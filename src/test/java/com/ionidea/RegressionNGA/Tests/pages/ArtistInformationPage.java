@@ -28,7 +28,7 @@ public class ArtistInformationPage extends MainPage{
     /**
      * the URL of the page
      */
-    public String pageUrl=m_baseUrl+"/content/ngaweb/Collection/artist-info.2377.html";
+    public String pageUrl=("/content/ngaweb/Collection/artist-info.2377.html");
      
     
     /**
@@ -147,7 +147,7 @@ public class ArtistInformationPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//li/span")
     public List<WebElement> categoryLabels;
     
-    @FindBy(how = How.XPATH, using ="(//a[contains(@href, '/content/ngaweb/Collection/artist-info.2377.html')])")
+    @FindBy(how = How.XPATH, using ="(//dt[@class='artist']/a[contains(@href, '/content/ngaweb/Collection/artist-info.2377.html')])")
     public List<WebElement> artistNameLabels;
     
     @FindBy(how = How.XPATH, using ="//ul[@id='returns']/li/dl/dd[@class='lifespan']")

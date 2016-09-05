@@ -1,9 +1,13 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
+import static java.awt.SystemColor.menu;
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 /**
  * @author TestQA
@@ -11,8 +15,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends Page {
     
-//MAIN MENU (HEADER)
-    
+    //Main Menu points    
     @FindBy (xpath = "//div[@id='header-wrap']/div/ul[@id='mainnav']/li/a")
     public List<WebElement> mainMenuOptions;  
 
@@ -51,56 +54,7 @@ public class MainPage extends Page {
     //Shop   
     @FindBy (xpath = "//div/div/ul/li[9]/ul/li/a")
     public List<WebElement> subMenuShop;
-    
-    //Search input field
-    @FindBy (xpath = "(//input[@id='searchterm'])[2]")
-    public WebElement searchInputField;  
-
-    
-    
-// FOOTER
-    @FindBy (xpath = "(//a[contains(text(),'About')])[2]")
-    public WebElement aboutLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Opportunities')])[2]")
-    public WebElement opportunitiesLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Press')])[2]")
-    public WebElement pressLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'NGA Images')])[2]")
-    public WebElement ngaImagesLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Newsletters')])[2]")
-    public WebElement newsLettersLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Notices')])[2]")
-    public WebElement noticesLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Contact Us')])[2]")
-    public WebElement contactUsLink;
-    
-    @FindBy (xpath = "(//a[contains(text(),'Audio/Video')])[2]")
-    public WebElement audioVideoLink;
-    
-    @FindBy (xpath = "//div[@id='footer']/div/a")
-    public WebElement directionsLink;
-    
-    @FindBy (xpath = "//a[contains(@href, 'https://twitter.com/ngadc')]")
-    public WebElement twitterNGALink;
-    
-    @FindBy (xpath = "//a[contains(@href, 'https://www.facebook.com/nationalgalleryofart')]")
-    public WebElement facebookNGALink;
-    
-    @FindBy (xpath = "//a[@href='http://instagram.com/ngadc']")
-    public WebElement instagramNGALink;
-    
-    @FindBy (xpath = "//a[@href='http://pinterest.com/ngadc']")
-    public WebElement pinterestNGALink;
-    
-    @FindBy (xpath = "//div[@id='footer']/div[2]/span")
-    public WebElement copyrightInformation;
-    
+   
 
     
     public MainPage(WebDriver driver) {

@@ -173,8 +173,7 @@ public class TestNgTestBase{
     public void tearDown() {
         WebDriverFactory.dismissAll();
     }
-    WebDriverWait wait = new WebDriverWait(driver, 30000);
-    
+    //WebDriverWait wait = new WebDriverWait(driver,30000);
     //Custom verification method - waits the element before check  
     public static boolean assertElementIsPresent(WebDriver driver, WebElement element1){
                 
