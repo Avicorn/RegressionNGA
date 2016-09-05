@@ -234,6 +234,7 @@ public class ArtistInformation extends TestNgTestBase{
         verifyAllAreUnselected(artistInformationPage.allCheckBoxes);
         System.out.println("all checkboxes are verified, the number is:" +artistInformationPage.allCheckBoxes.size());
         
+        
 
         //Verify the number of the works of art
         int worksNumber;
@@ -247,5 +248,3 @@ public class ArtistInformation extends TestNgTestBase{
  
         
 }
-
-
