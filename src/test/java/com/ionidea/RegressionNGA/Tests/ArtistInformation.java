@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
@@ -21,17 +22,20 @@ import org.testng.annotations.Test;
  */
 public class ArtistInformation extends TestNgTestBase{ 
     
-    //WebDriverWait wait = new WebDriverWait(driver,30000);
+    //WebDriverWait wait = new WebDriverWait(driver,30000);   
     
     /**     * 
      * @param list - the  list of WenElements of the page
      * @return boolean
      */
-    public boolean verifyAllAreDisplayed(List<WebElement> list){
+    public boolean verifyAllElementsAreDisplayed(List<WebElement> list){
         int index1 =0;
-        while(index1<list.size()){
-             //wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
-             Assert.assertTrue(list.get(index1).isDisplayed());  
+        WebDriverWait wait = new WebDriverWait(driver,30000);
+        //verify all elements from the list
+        while(index1<list.size()){             
+             wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
+             Assert.assertTrue(list.get(index1).isDisplayed());               
+             System.out.println("The element is displayed"+list.get(index1));
              index1++; 
         }
         return true;
@@ -40,31 +44,34 @@ public class ArtistInformation extends TestNgTestBase{
      * 
      * @param list the list of check-boxes
      * @return 
-     */
-    
-    public boolean verifyAllAreUnselected(List<WebElement> list){
-        int index1 =0;
-        while(index1<list.size()){
-             //wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
-             Assert.assertTrue(list.get(index1).isDisplayed());  
-             index1++; 
+     */    
+    public boolean verifyAllCheckBoxesAreUnselected(List<WebElement> list){
+        int index2 =0;
+        WebDriverWait wait = new WebDriverWait(driver,30000);
+        //verify all elements from the list
+        while(index2<list.size()){
+             wait.until(ExpectedConditions.elementToBeClickable(list.get(index2)));
+             Assert.assertFalse(list.get(index2).isSelected());                
+             System.out.println("The element is not selected"+list.get(index2));
+             index2++;
         }
         return true;
-    }
-    
+    }    
     /**
      * 
      * @param listToClick - list of WebElements
      * @return boolean 
-     */
-    
-    public boolean clickAll(List<WebElement> listToClick){
+     */    
+    public boolean clickAllElements(List<WebElement> listToClick){
         int index1 =0;
+        WebDriverWait wait = new WebDriverWait(driver,30000);
+        //verify all elements from the list
         while(index1<listToClick.size()){
-             //wait.until(ExpectedConditions.elementToBeClickable(listToClick.get(index1)));
+             wait.until(ExpectedConditions.elementToBeClickable(listToClick.get(index1)));
              listToClick.get(index1).click();  
              index1++; 
         }
+        System.out.println("All elements are selected");
         return true;
     }
     /**
@@ -76,13 +83,16 @@ public class ArtistInformation extends TestNgTestBase{
      */
     public int addToListallWorkObjects(ArtistInformationPage artistInformationPage,List<WebElement> list) throws InterruptedException{
         int number;
+        WebDriverWait wait = new WebDriverWait(driver,30000);
+        // the list will contain elemtns from all pages
         List<WebElement> entireList = new ArrayList<WebElement>();
         entireList.addAll(list);
+        //open all pages one by one and add work objects to the entire list
         try{
             while(artistInformationPage.pageButtonNext.get(0).isDisplayed()){
                 Thread.sleep(2000);
                 artistInformationPage.pageButtonNext.get(0).click();
-                //wait.until(ExpectedConditions.visibilityOfAllElements(list));
+                wait.until(ExpectedConditions.visibilityOfAllElements(list));
                 entireList.addAll(artistInformationPage.artistNameLabels); 
                 System.out.println("the entire number is:"+entireList.size());
             }
@@ -90,13 +100,19 @@ public class ArtistInformation extends TestNgTestBase{
                 System.out.println("The loop is over");
         }
         System.out.println("The full number of works of art is: 50!");
-        number=entireList.size();
         
+        //get the number of the ojects 
+        number=entireList.size();        
         return number;
         
-    }
-    
-            
+    }    
+    public void openPage(ArtistInformationPage page, WebElement uIElement) throws InterruptedException{
+        driver.get(m_baseUrl+page.getUrl());
+        Thread.sleep(2000);
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        uIElement.click();
+    }    
     @Test       
     
     //Verify that page contains all static UI elemtns
@@ -104,15 +120,11 @@ public class ArtistInformation extends TestNgTestBase{
         
         //Initiate new page
         ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
-        
+       
         //move to the URL of test page
-        driver.get(m_baseUrl+artistInformationPage.getUrl());
-        Thread.sleep(2000);
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        artistInformationPage.biographyLink.click();
+        openPage(artistInformationPage,artistInformationPage.biographyLink);
         
-        //Test objects of Main page
+        //Test static objects of Main page
         assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
         assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    
         assertElementIsPresent(driver, artistInformationPage.nameTitle);
@@ -135,21 +147,20 @@ public class ArtistInformation extends TestNgTestBase{
         assertTextIsPresent(driver, artistInformationPage.dateOfArticle,"April 24, 2014");
     }  
     //Verify all UI elements of the #Bibliography
-       
+    
+    
+    
     @Test
         
-        public void elementsExistBibliography() throws InterruptedException{
+        public void elementsExistBibliography() throws InterruptedException{            
         
         //Initiate new page
         ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
         
         //move to the URL of test page
-        driver.get(m_baseUrl+artistInformationPage.getUrl());
-        Thread.sleep(2000);
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        artistInformationPage.bibliographyLink.click();
-        //wait.until(ExpectedConditions.visibilityOf(artistInformationPage.bibliographyLabel));
+        openPage(artistInformationPage,artistInformationPage.bibliographyLink);
+        WebDriverWait wait = new WebDriverWait(driver,30000);
+        wait.until(ExpectedConditions.visibilityOf(artistInformationPage.bibliographyLabel));
         
         //Verify all static  elements of the page
         assertTextIsPresent(driver,artistInformationPage.bibliographyLabel,"BIBLIOGRAPHY");
@@ -205,33 +216,32 @@ public class ArtistInformation extends TestNgTestBase{
         
         //Initiate new page
         ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
+        WebDriverWait wait = new WebDriverWait(driver,30000);
         
         //move to the URL of test page
-        driver.get(m_baseUrl+artistInformationPage.getUrl());
-        Thread.sleep(2000);
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        artistInformationPage.worksOfArtLink.click();
-        //wait.until(ExpectedConditions.visibilityOf(artistInformationPage.leftAccordionsClosed.get(1)));    
+        openPage(artistInformationPage,artistInformationPage.worksOfArtLink);        
+        wait.until(ExpectedConditions.visibilityOf(artistInformationPage.leftAccordionsClosed.get(1)));    
        
         //Verify number  of folter accordions        
         Assert.assertEquals(artistInformationPage.leftAccordionsClosed.size(),7);  
         System.out.println("the number of accordions is correct");
         
         //Expand all accordions
-        clickAll(artistInformationPage.leftAccordionsClosed);
+        clickAllElements(artistInformationPage.leftAccordionsClosed);
         System.out.println("all closed accordions are displayed");
         
         //verify all left accordions
-        verifyAllAreDisplayed(artistInformationPage.leftAccordionsOpen);
+        verifyAllElementsAreDisplayed(artistInformationPage.leftAccordionsOpen);
         System.out.println("all open accordions are displayed");
         
         //verify all check-boxes and respective labels
         Assert.assertEquals(artistInformationPage.allCheckBoxes.size(),artistInformationPage.allLabels.size());
         Assert.assertEquals(artistInformationPage.allCheckBoxes.size(),11);
-        verifyAllAreDisplayed(artistInformationPage.allCheckBoxes);
-        verifyAllAreDisplayed(artistInformationPage.allLabels);
-        verifyAllAreUnselected(artistInformationPage.allCheckBoxes);
+        verifyAllElementsAreDisplayed(artistInformationPage.allCheckBoxes);
+        verifyAllElementsAreDisplayed(artistInformationPage.allLabels);
+        
+        //verify all check-boxes are unselected
+        verifyAllCheckBoxesAreUnselected(artistInformationPage.allCheckBoxes);
         System.out.println("all checkboxes are verified, the number is:" +artistInformationPage.allCheckBoxes.size());
         
         
