@@ -38,7 +38,13 @@ public class PageHeader extends Page {
     public final String CNST_XPATH_MENU_DESKTOP = "//*[@id='wrapper']/*[@id='header-wrap']/*[@id='header']/ul[@id='mainnav']";
     public final String CNST_XPATH_MENU_GROUP_DESKTOP = CNST_XPATH_MENU_DESKTOP + "/li[{{group-index}}]";
     public final String CNST_XPATH_MENU_ITEM_DESKTOP = "ul/li[{{item-index}}]";
-     
+    
+    @FindBy(how = How.XPATH, using = "(//ul[@id='mainnav']/li/a)[10]")
+    public WebElement header1;       
+    
+    @FindBy(how = How.XPATH, using = "(//ul[@id='mainnav']/li/ul/li/a)[56]")
+    public WebElement header2; 
+    
     @FindBy(how = How.TAG_NAME, using = "h1")
     public WebElement header;
 
