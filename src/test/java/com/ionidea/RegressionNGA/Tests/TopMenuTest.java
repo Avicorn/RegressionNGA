@@ -29,7 +29,7 @@ public class TopMenuTest extends TestNgTestBase {
     @BeforeMethod
     public void initPageObjects() {
         pageHeader = PageFactory.initElements(driver, PageHeader.class);
-        pageHeader.Initialize(m_config);
+        pageHeader.initialize(m_config);
         
         PageFactory.initElements(driver, this);
     }

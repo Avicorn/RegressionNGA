@@ -6,11 +6,17 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 /**
  * Abstract class representation of a Page in the UI. Page object pattern
  */
-public abstract class Page {
+public abstract class Page{
 
     protected WebDriver driver;
 
@@ -20,12 +26,15 @@ public abstract class Page {
     protected static String m_ngaUserLogin;
     protected static String m_ngaUserPassword;
     protected static int m_standartWaitTime;
+    public String pageUrl;
+    
 
     public Page(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void Initialize(IConfiguration configuration) {
+    public void initialize(IConfiguration configuration) {
 
         m_config = configuration;
 
@@ -44,5 +53,13 @@ public abstract class Page {
     public String getTitle() {
         return driver.getTitle();
     }
+     
+    public String getUrl(){
+        return this.pageUrl;
+    }
+    
+
+
+ 
 
 }

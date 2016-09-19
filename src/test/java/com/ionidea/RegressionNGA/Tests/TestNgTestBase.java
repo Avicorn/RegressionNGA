@@ -34,15 +34,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 /**
  * Base class for TestNG-based test classes
@@ -176,4 +180,41 @@ public class TestNgTestBase {
     public void tearDown() {
         WebDriverFactory.dismissAll();
     }
+
+
+    //Custom verification method - waits the element before check  
+    public static boolean assertElementIsPresent(WebDriver driver, WebElement element1){
+                
+        WebDriverWait wait = new WebDriverWait(driver, m_standartWaitTime);    
+        m_wait.until(ExpectedConditions.visibilityOf(element1));
+        Assert.assertTrue(element1.isDisplayed());       
+        System.out.println("The element  is found:"+element1.toString());
+        return true;
+    }
+    
+    //Custom verification method - waits the element and verifies the text containing in the web element
+    public static boolean assertTextIsPresent(WebDriver driver, WebElement element2,String text){
+        m_wait.until(ExpectedConditions.visibilityOf(element2));
+        Assert.assertEquals(element2.getText(),text);     
+        System.out.println("The element  is found:"+element2.getText());;
+        return true;
+    }
+   
+            //action perfoms manual selection of the main menu
+    public void selectMenuOption(WebElement menuIndex, WebElement subMenuIndex) throws InterruptedException{
+        
+        //create new action
+        Actions action = new Actions(driver); 
+        m_wait.until(ExpectedConditions.elementToBeClickable(menuIndex));
+        Thread.sleep(5000);
+        //Open the main menu
+        action.moveToElement(menuIndex);        
+        action.build().perform();
+        //Select submenu
+        action.moveToElement(subMenuIndex);        
+        action.click().perform();
+       
+    }
+    
 }
+

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.How;
 /**
  * Sample page
  */
-public class CollectionSearchResultsPage extends Page {
+public class CollectionSearchResultsPage extends CollectionSearchPage {
 
   
 //    @FindBy(how = How.ID, using = "artist")
