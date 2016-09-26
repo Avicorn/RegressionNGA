@@ -49,7 +49,15 @@ public abstract class Page{
             System.exit(1);
         }
     }
-
+    
+    public void openPageWidget(ArtistInformationPage page, String baseUrl, WebElement uIElement) throws InterruptedException{
+        driver.get(baseUrl+page.getUrl());
+        Thread.sleep(2000);
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        uIElement.click();
+    }   
+    
     public String getTitle() {
         return driver.getTitle();
     }
