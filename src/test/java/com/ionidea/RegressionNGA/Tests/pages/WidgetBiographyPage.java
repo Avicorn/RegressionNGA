@@ -20,12 +20,6 @@ public class WidgetBiographyPage extends MainPage{
         super(driver);
     }
 
-    
-    //@FindBy(how = How.XPATH, using ="//li[@id='works-link']")
-    //public WebElement worksOfArtLink;
-    
-    //@FindBy(how = How.XPATH, using ="//li[@id='bibliography-link']")
-    //public WebElement artistBibliographyLink;
        
     @FindBy(how = How.XPATH, using ="//div[@id='biography']/h5")
     public WebElement biographyTitle;

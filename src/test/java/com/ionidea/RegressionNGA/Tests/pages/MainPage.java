@@ -15,6 +15,10 @@ import org.openqa.selenium.support.How;
 
 public class MainPage extends Page {
     
+    public MainPage(WebDriver driver) {
+        super(driver);
+    }
+    
 //Main Menu points    
     @FindBy (xpath = "//div[@id='header-wrap']/div/ul[@id='mainnav']/li/a")
     public List<WebElement> mainMenuOptions;  
@@ -79,9 +83,15 @@ public class MainPage extends Page {
     public WebElement copyRightLabel;
     
     
-    public MainPage(WebDriver driver) {
-        super(driver);
-    }
+    public <P extends Page> void openPageWidget(P page, String baseUrl, WebElement uiElement) throws InterruptedException{
+        driver.get(baseUrl+page.getUrl());
+        Thread.sleep(2000);
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        uiElement.click();
+    } 
+    
+
     
 
 }
