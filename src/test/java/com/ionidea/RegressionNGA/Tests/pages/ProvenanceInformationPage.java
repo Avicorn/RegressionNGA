@@ -6,16 +6,40 @@
 package com.ionidea.RegressionNGA.Tests.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 /**
  *
  * @author TestQA
  */
-public class ProvenanceInformationPage extends Page{
+public class ProvenanceInformationPage extends MainPage{
     
     public ProvenanceInformationPage(WebDriver driver) {
         super(driver);
     }
+    
+    
+    
+        //Links 
+    @FindBy(how = How.XPATH, using ="//li[@id='relatedcontent-link']")
+    public WebElement relatedContentLink;
+    
+    @FindBy(how = How.XPATH, using ="//li[@id='works-link']")
+    public WebElement worksOfArtLink;
+    
+       //Static links
+    @FindBy(how = How.XPATH, using ="//div [@class='artist-intro detailheader']/dl/dt[@class='artist']")
+    public WebElement artistNameTitle;
+    
+    @FindBy(how = How.XPATH, using ="//div[@class='artist-intro detailheader']/dl/dd[@class='lifespan']")
+    public WebElement artistLifeSpan;
+    
+    @FindBy(how = How.XPATH, using ="//div[@class='artist-intro detailheader']/dl/dd[@class='description']")
+    public WebElement artistDescription;
+    
+    
     
     
 }

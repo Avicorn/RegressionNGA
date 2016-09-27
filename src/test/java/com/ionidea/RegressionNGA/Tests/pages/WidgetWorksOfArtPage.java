@@ -32,16 +32,16 @@ public class WidgetWorksOfArtPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//li[@id='works-link']")
     public WebElement worksOfArtistLink;
     
-    @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div/h3")
+    @FindBy(how = How.XPATH, using ="//fieldset/div[not(@style='display: none;')]/h3")
     public List<WebElement> leftAccordionsClosed;
     
-    @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div/h3")
+    @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div[not(@style='display: none;')]/h3")
     public List<WebElement> leftAccordionsOpen;
     
-    @FindBy(how = How.XPATH, using ="*//fieldset [@Id='artobject-fieldset']/div/div/ul/li/input")
+    @FindBy(how = How.XPATH, using ="*//fieldset [@Id='artobject-fieldset']/div/div/ul/li/input [not(@disabled='disabled')]")
     public List<WebElement> allCheckBoxes;
     
-    @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div/div/ul/li/label")
+    @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div [not(@style='display: none;')]/div/ul/li/label")
     public List<WebElement> allLabels;
       
     @FindBy(how = How.XPATH, using ="//select[@id='year1']")
@@ -161,24 +161,23 @@ public class WidgetWorksOfArtPage extends MainPage{
      * @return - number of Works of Art
      * @throws InterruptedException 
      */
-    public  int addToListallWorkObjects(WidgetWorksOfArtPage page,List<WebElement> list, FluentWait wait) throws InterruptedException{
+    public  int addToListallWorkObjects(WidgetWorksOfArtPage page,List<WebElement> list,Integer pageNumber, FluentWait wait) throws InterruptedException{
         int number;
         
         // the list will contain elemtns from all pages
         List<WebElement> entireList = new ArrayList<WebElement>();
         entireList.addAll(list);
         //open all pages one by one and add work objects to the entire list
-        try{
-            while(page.pageButtonNext.get(0).isDisplayed()){
-                Thread.sleep(2000);
-                page.pageButtonNext.get(0).click();
-                wait.until(ExpectedConditions.visibilityOfAllElements(list));
-                entireList.addAll(page.artistNameLabels); 
-                System.out.println("the entire number is:"+entireList.size());
-            }
-        }catch(Exception e){
-                System.out.println("The loop is over");
+        int currentPage=0;
+        while(currentPage<pageNumber){
+            Thread.sleep(2000);
+            page.pageButtonNext.get(0).click();
+            wait.until(ExpectedConditions.visibilityOfAllElements(list));
+            entireList.addAll(page.artistNameLabels); 
+            System.out.println("the entire number is:"+entireList.size());
+            currentPage++;
         }
+       
         System.out.println("The full number of works of art is: 50!");
         
         //get the number of the ojects 

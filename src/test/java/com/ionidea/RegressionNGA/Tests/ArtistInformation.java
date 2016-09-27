@@ -162,7 +162,7 @@ public class ArtistInformation extends TestNgTestBase{
 
         //Verify the number of the works of art
         int worksNumber;
-        worksNumber = widget.addToListallWorkObjects(widget,widget.artistNameLabels, (FluentWait) m_wait);
+        worksNumber = widget.addToListallWorkObjects(widget,widget.artistNameLabels,4, (FluentWait) m_wait);
         Assert.assertEquals(worksNumber,50);
         System.out.println("The number of author labels is - 50");
   
