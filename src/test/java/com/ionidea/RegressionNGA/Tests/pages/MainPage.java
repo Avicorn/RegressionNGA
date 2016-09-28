@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
 
 /**
  * @author TestQA
@@ -90,6 +93,18 @@ public class MainPage extends Page {
         Thread.sleep(2000);
         uiElement.click();
     } 
+
+    public boolean verifyAllElementsAreDisplayed(List<WebElement> list, FluentWait wait) {
+        int index1 = 0;
+        //verify all elements from the list
+        while (index1 < list.size()) {
+            wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
+            Assert.assertTrue(list.get(index1).isDisplayed());
+            System.out.println("The element is displayed" + list.get(index1));
+            index1++;
+        }
+        return true;
+    }
     
 
     

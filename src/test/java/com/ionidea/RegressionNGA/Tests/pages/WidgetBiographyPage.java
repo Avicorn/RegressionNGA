@@ -24,6 +24,9 @@ public class WidgetBiographyPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//div[@id='biography']/h5")
     public WebElement biographyTitle;
     
+    @FindBy(how = How.XPATH, using ="//div[@id='biography']")
+    public WebElement biographyAll;    
+    
     @FindBy(how = How.XPATH, using ="//div[@id='biography']/p")
     public WebElement textBegin;
     

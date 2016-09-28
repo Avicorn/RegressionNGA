@@ -79,7 +79,7 @@ public class WidgetWorksOfArtPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//li/span")
     public List<WebElement> categoryLabels;
     
-    @FindBy(how = How.XPATH, using ="(//dt[@class='artist']/a[contains(@href, '/content/ngaweb/Collection/artist-info.2377.html')])")
+    @FindBy(how = How.XPATH, using ="//div[@id='collectionListing']//div/ul[@id='returns']/li/dl[1]/dt")
     public List<WebElement> artistNameLabels;
     
     @FindBy(how = How.XPATH, using ="//ul[@id='returns']/li/dl/dd[@class='lifespan']")
@@ -110,17 +110,6 @@ public class WidgetWorksOfArtPage extends MainPage{
     public WebElement onViewLabelsList;
 
     
-    public boolean verifyAllElementsAreDisplayed(List<WebElement> list, FluentWait wait){
-        int index1 =0;
-        //verify all elements from the list
-        while(index1<list.size()){             
-             wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
-             Assert.assertTrue(list.get(index1).isDisplayed());               
-             System.out.println("The element is displayed"+list.get(index1));
-             index1++; 
-        }
-        return true;
-    }
     /**
      * 
      * @param list the list of check-boxes
@@ -168,7 +157,7 @@ public class WidgetWorksOfArtPage extends MainPage{
         List<WebElement> entireList = new ArrayList<WebElement>();
         entireList.addAll(list);
         //open all pages one by one and add work objects to the entire list
-        int currentPage=0;
+        int currentPage=1;
         while(currentPage<pageNumber){
             Thread.sleep(2000);
             page.pageButtonNext.get(0).click();

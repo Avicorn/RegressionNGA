@@ -29,6 +29,12 @@ public class ProvenanceInformationPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//li[@id='works-link']")
     public WebElement worksOfArtLink;
     
+    @FindBy(how = How.XPATH, using ="//li[@id='biography-link']")
+    public WebElement biographyLink;
+    
+    @FindBy(how = How.XPATH, using ="//li[@id='bibliography-link']")
+    public WebElement artistBibliographyLink;
+    
        //Static links
     @FindBy(how = How.XPATH, using ="//div [@class='artist-intro detailheader']/dl/dt[@class='artist']")
     public WebElement artistNameTitle;
