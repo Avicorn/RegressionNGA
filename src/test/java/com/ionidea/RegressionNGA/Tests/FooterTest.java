@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Test QA
+ * @author TestQA
  */
 public class FooterTest extends TestNgTestBase {
         
