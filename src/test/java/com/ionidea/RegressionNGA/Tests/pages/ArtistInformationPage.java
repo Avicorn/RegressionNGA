@@ -79,31 +79,7 @@ public class ArtistInformationPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//input[@id='ot-search']")
     public WebElement searchInputField;
  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //Artist bibliography
-    //@FindBy(how = How.XPATH, using ="//li[@id='bibliography-link']")
-   // public WebElement bibliographyLink;
-    
-    
-    
+
     
     @Override
     public String getUrl(){

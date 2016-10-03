@@ -67,22 +67,22 @@ public class MainPage extends Page {
     @FindBy (xpath = "//div[@id='footer']/ul[@class='footer-nav']/li/a")
     public List<WebElement> footerMenu;
     
-    @FindBy (xpath = "//div[@class='quick-info']/a")
+    @FindBy (xpath = "//span[2]/a[@class='directions']")
     public WebElement directions;
        
-    @FindBy (xpath = "//a[contains(@href, 'https://twitter.com/ngadc')]")
+    @FindBy (xpath = "//a/i[@class='fa fa-twitter-square']")
     public WebElement twitterLink;
     
-    @FindBy (xpath = "//a[contains(@href, 'https://www.facebook.com/nationalgalleryofart')]")
+    @FindBy (xpath = "//a/i[@class='fa fa-facebook-official']")
     public WebElement facebookLink;
     
-    @FindBy (xpath = "//a[@href='http://instagram.com/ngadc']")
+    @FindBy (xpath = "//a/i[@class='fa fa-instagram']")
     public WebElement instagramLink;
     
-    @FindBy (xpath = "//a[@href='http://pinterest.com/ngadc']")
+    @FindBy (xpath = "//a/i[@class='fa fa-pinterest']")
     public WebElement pinterestLink;
     
-    @FindBy (xpath = "//div[@id='footer']/div[2]/span")
+    @FindBy (xpath = "//div/span[@class='copyright']")
     public WebElement copyRightLabel;
     
     
