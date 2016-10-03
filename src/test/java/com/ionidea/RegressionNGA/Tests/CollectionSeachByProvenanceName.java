@@ -9,6 +9,8 @@ import com.ionidea.RegressionNGA.Tests.util.IDriverExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import org.testng.Assert;
@@ -45,7 +47,6 @@ public class CollectionSeachByProvenanceName extends TestNgTestBase {
                 + "} else if (document.createEventObject) {"
                 + "     arguments[0].fireEvent('onmouseover');"
                 + "}";
-
         ((JavascriptExecutor) driver).executeScript(mouseOverScript, element);
     }
     
@@ -66,7 +67,7 @@ public class CollectionSeachByProvenanceName extends TestNgTestBase {
         
         Note: this test doesn't verify quality of search results
     */
-    
+/*    
     // Verify Artist search by Artist field ONLY, on simple data, letters and digits only.
     @Test
     public void testCollectionSearchByArtistName() {
@@ -121,19 +122,36 @@ public class CollectionSeachByProvenanceName extends TestNgTestBase {
         Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
     }    
     
-    
+*/    
     // Verify Collection search on Provenance Name. This one is different, it works only with exact value, selected wrom dropdown after initial search term input
     @Test
     public void testCollectionSearchByProvenanceName() {
-        String SearchTerm = "A.R. Ball";
+        String SearchTerm = "A";
         
         driver.get(m_baseUrl + collectionSearch.pageURL);
         //Enter Search term in to target field
-        collectionSearch.provenanceNameTextInput.sendKeys(SearchTerm);
+        
+        //TODO: Find out if there is a way to staff keys in to input one by one and if it makes input events to fire
+        
+        //collectionSearch.provenanceNameTextInput.sendKeys(SearchTerm);
         //mouse over target term
         
-        hoverElement(driver.findElement(By.id("ui-id-3")));
-        driver.findElement(By.id("ui-id-3")).click();
+        Actions builder = new Actions(driver);
+        Action hoverAndClick = builder
+                //.moveToElement(collectionSearch.provenanceNameTextInput)
+                //.click(collectionSearch.provenanceNameTextInput)
+                .sendKeys(collectionSearch.provenanceNameTextInput, SearchTerm)
+                .build();
+        hoverAndClick.perform();
+        
+        hoverAndClick = builder
+                //.moveToElement(driver.findElement(By.xpath("//li[@class=\"ui-menu-item\"]/a")))
+                .click(driver.findElement(By.xpath("//li[@class=\"ui-menu-item\"]/a")))
+                .build();
+        hoverAndClick.perform();
+        
+        collectionSearch.provenanceNameSearchButton.click();
+/*
         //hoverElementxxx(driver.findElement(By.xpath("//li[@class='ui-menu-item']/a[contains(text(),'A.R. Ball')]")));
         hoverElement(driver.findElement(By.xpath("//li[@class='ui-menu-item']")));
         driver.findElement(By.xpath("//li[@class='ui-menu-item']")).click();
@@ -149,6 +167,7 @@ public class CollectionSeachByProvenanceName extends TestNgTestBase {
         Assert.assertEquals(SearchTerm, firstSearchTerm.getText());
         //Verify number of results is > 0
         Assert.assertTrue(collectionSearchResults.SearchResultsTotal(driver) > 0);
+*/
     }
     
 }

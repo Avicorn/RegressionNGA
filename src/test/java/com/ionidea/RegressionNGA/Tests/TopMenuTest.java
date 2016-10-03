@@ -46,27 +46,37 @@ public class TopMenuTest extends TestNgTestBase {
         try {
             m_wait.until(ExpectedConditions.titleIs(targetPageTitle));
         } catch (TimeoutException e) {
+            System.out.println(e.getCause());
         }
         Assert.assertEquals(driver.getTitle(), targetPageTitle);
     }
     
-     /*
-        1. Open landing page
-        2. Compare target menuitem text with expected one.
-        3. Try to click on it index
-        This helps to make sure menu order is fine.
-        4. Compare Title, URL and <H2> value on new page with desired 
-        This helps to make sure menuitem linked to correct page.
+     /**
+     * the method verifies that the opened page is respective to the used sub menu option
+     * @param  
+     * @param int menuGroup
+     * @param int menuItem
+     * @param String menuItemText
+     * @param String targetPageURL
+     * @param String targetPageTitle
+     * @param String targetPageText
+     * @param Boolean isNGAPage
+     * 
+     * 
+        Opens landing page
+        Compares target menu item text with expected one.
+        Tries to click on it by index. This should help to make sure menu order is fine.
+        Compares Title, URL and some text value on page with desired. This should help to make sure menu item is linked to the correct page.
     
-        In case any of above fails - test is considered failed.
+        In case any of the above fails - test is considered failed.
     */    
     
     // Menu groups
     
-    @Parameters(value = { "menuGroup", "menuItem", "menuItemText", "targetPageURL", "targetPageTitle", "targetPageText" })
-    @Test(threadPoolSize = 2, invocationCount = 1, invocationTimeOut = 60000)
+    @Parameters(value = { "menuGroup", "menuItem", "menuItemText", "targetPageURL", "targetPageTitle", "targetPageText", "isNGAPage" })
+    @Test
     
-    public void menuGroups(int menuGroup, int menuItem, String menuItemText, String targetPageURL, String targetPageTitle, String targetPageText) throws NotImplementedException{
+    public void menuGroups(int menuGroup, int menuItem, String menuItemText, String targetPageURL, String targetPageTitle, String targetPageText, Boolean isNGAPage) throws NotImplementedException{
         driver.get(m_baseUrl);
         //mouseover on menuitem to make it visible
         WebElement liElement;
@@ -81,6 +91,7 @@ public class TopMenuTest extends TestNgTestBase {
         try {
             m_wait.until(ExpectedConditions.attributeToBe(aElement, "textContent", menuItemText));
         } catch (TimeoutException e) {
+            System.out.println(e.getCause());
         }
         Assert.assertEquals(m_driverExtension.getElementText(aElement), menuItemText, "Menu item text expected " + menuItemText);
 
@@ -94,8 +105,20 @@ public class TopMenuTest extends TestNgTestBase {
         try {
             m_wait.until(ExpectedConditions.titleIs(targetPageTitle));
         } catch (TimeoutException e) {
+            System.out.println(e.getCause());
         }
         Assert.assertEquals(driver.getTitle(), targetPageTitle, "Target page title");
+        
+        //Dirty hack to make sure page header will be loaded at least. Does not work for nonNGA pages though, so needs another dirty hack to speed up tests on nonNGA pages
+        
+        if (isNGAPage){
+            try {
+                //System.out.println("is www.nga.gov page");
+                m_wait.until(ExpectedConditions.elementToBeClickable(pageHeader.ngaHomeLink));
+            } catch (TimeoutException e) {
+                System.out.println(e.getCause());
+            }
+        }
         Assert.assertTrue(driver.getPageSource().contains(targetPageText), "Text \"" + targetPageText +"\" to be present on target page" );
     }
 }

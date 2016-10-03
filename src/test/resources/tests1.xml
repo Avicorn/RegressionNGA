@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Tests1" verbose="10">
+    <suite-files>
+        <suite-file path="/TopMenuSuite.xml"></suite-file>
+    </suite-files>  
+    
+    <test name="LoginWithNGATest">
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.LoginWithNGATest"/>
+        </classes>
+    </test>
+    
+    <test name="CollectionSeachTest">
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.CollectionSeachTest"/>
+        </classes>
+    </test>
+ 
+</suite>
