@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TopMenuSuite" verbose="10">
+
+    <test name="NgaHomeLink">
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="ngaHomeLink" />
+                </methods>
+            </class>    
+        </classes>        
+    </test>  
+
+    <test name="TopMenuGroupVisit">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Visit"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit.html"/>
+        <parameter name="targetPageTitle" value="Visit"/>
+        <parameter name="targetPageText" value="Visit"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitGettingHere">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Getting Here"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/getting-here.html"/>
+        <parameter name="targetPageTitle" value="Getting Here"/>
+        <parameter name="targetPageText" value="Located between 3rd and 9th Streets along Constitution Avenue NW"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitAccessibility">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Accessibility"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/accessibility.html"/>
+        <parameter name="targetPageTitle" value="Accessibility"/>
+        <parameter name="targetPageText" value="The Gallery is committed to making its collection, buildings, and programs accessible to all audiences"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitToursAndGuides">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Tours &amp; Guides"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/tours-and-guides.html"/>
+        <parameter name="targetPageTitle" value="Tours and Guides"/>
+        <parameter name="targetPageText" value="Explore the Gallery's collections, exhibitions, and Sculpture Garden with guided tours, family guides, audio tours, and more."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitGalleryShops">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Gallery Shops"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/shops.html"/>
+        <parameter name="targetPageTitle" value="Gallery Shops"/>
+        <parameter name="targetPageText" value="No visit to the National Gallery of Art is complete without browsing through the Gallery Shops to sample our attractive, educational, and ever-changing assortment of merchandise related to the permanent collection and special exhibitions."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitCafes">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Cafés"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/cafes.html"/>
+        <parameter name="targetPageTitle" value="Cafes"/>
+        <parameter name="targetPageText" value="Cafés"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitIceRink">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="Ice Rink"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/ice-rink.html"/>
+        <parameter name="targetPageTitle" value="The Ice Rink"/>
+        <parameter name="targetPageText" value="Located on the National Mall between 7th and 9th Streets along Constitution Avenue NW, the Ice Rink is a favorite Washington destination, attracting thousands of visitors to skate in the nation's capital."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitCopyistProgram">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="6"/>
+        <parameter name="menuItemText" value="Copyist Program"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/copyist.html"/>
+        <parameter name="targetPageTitle" value="Copyist"/>
+        <parameter name="targetPageText" value="The copyist program at the National Gallery of Art offers a unique opportunity for artists to study the techniques of old masters through intimate study in the galleries."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupVisitVisitorPolicies">
+        <parameter name="menuGroup" value="0"/>
+        <parameter name="menuItem" value="7"/>
+        <parameter name="menuItemText" value="Visitor Policies"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/visit/visitor-policies.html"/>
+        <parameter name="targetPageTitle" value="Visitor Policies"/>
+        <parameter name="targetPageText" value="For the protection of visitors and staff, as well as to preserve the Gallery's collections and facilities"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+       <test name="TopMenuGroupCollection">
+        <parameter name="menuGroup" value="1"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Collection"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/Collection.html"/>
+        <parameter name="targetPageTitle" value="Collection"/>
+        <parameter name="targetPageText" value="The Collection"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCollectionHighlights">
+        <parameter name="menuGroup" value="1"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Highlights"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/Collection/highlights.html"/>
+        <parameter name="targetPageTitle" value="Highlights"/>
+        <parameter name="targetPageText" value="Highlights"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCollectionSearchtheCollection">
+        <parameter name="menuGroup" value="1"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Search the Collection"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/Collection/collection-search.html"/>
+        <parameter name="targetPageTitle" value="Collection Search"/>
+        <parameter name="targetPageText" value="Search the Collection"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCollectionArtists">
+        <parameter name="menuGroup" value="1"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Artists"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/Collection/artists.html"/>
+        <parameter name="targetPageTitle" value="Artists"/>
+        <parameter name="targetPageText" value="ARTISTS"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCollectionRecentAcquisitions">
+        <parameter name="menuGroup" value="1"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Recent Acquisitions"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/Collection/recent_acquisitions.html"/>
+        <parameter name="targetPageTitle" value="Recent Acquisitions"/>
+        <parameter name="targetPageText" value="Recent Acquisitions"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>   
+    
+    <test name="TopMenuGroupExhibitions">
+        <parameter name="menuGroup" value="2"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Exhibitions"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/exhibitions.html"/>
+        <parameter name="targetPageTitle" value="Exhibitions"/>
+        <parameter name="targetPageText" value="Current Exhibitions"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupExhibitionsCurrent">
+        <parameter name="menuGroup" value="2"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Current"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/exhibitions/current.html"/>
+        <parameter name="targetPageTitle" value="Current"/>
+        <parameter name="targetPageText" value="Current Exhibitions and Installations"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupExhibitionsUpcoming">
+        <parameter name="menuGroup" value="2"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Upcoming"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/exhibitions/upcoming.html"/>
+        <parameter name="targetPageTitle" value="Upcoming"/>
+        <parameter name="targetPageText" value="Upcoming Exhibitions"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupExhibitionsOnTour">
+        <parameter name="menuGroup" value="2"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="On Tour"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/exhibitions/ontour.html"/>
+        <parameter name="targetPageTitle" value="On Tour"/>
+        <parameter name="targetPageText" value="Exhibitions On Tour"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupExhibitionsPast">
+        <parameter name="menuGroup" value="2"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Past"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/exhibitions/past.html"/>
+        <parameter name="targetPageTitle" value="Past"/>
+        <parameter name="targetPageText" value="Past Exhibitions"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+                <test name="TopMenuGroupEducation">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Education"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education.html"/>
+        <parameter name="targetPageTitle" value="Education"/>
+        <parameter name="targetPageText" value="Education"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationTeachers">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Teachers"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/teachers.html"/>
+        <parameter name="targetPageTitle" value="Teachers"/>
+        <parameter name="targetPageText" value="Teachers"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationFamilies">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Families"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/families.html"/>
+        <parameter name="targetPageTitle" value="Families"/>
+        <parameter name="targetPageText" value="Families"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationNGAkids">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="NGAkids"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/kids.html"/>
+        <parameter name="targetPageTitle" value="NGAkids Art Zone"/>
+        <parameter name="targetPageText" value="NGAkids Art Zone"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationTeens">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Teens"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/teens.html"/>
+        <parameter name="targetPageTitle" value="Teens"/>
+        <parameter name="targetPageText" value="Teens"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationAdults">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Adults"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/adults.html"/>
+        <parameter name="targetPageTitle" value="Adults"/>
+        <parameter name="targetPageText" value="Adults"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationInternsandFellows">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="Interns and Fellows"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/interns-fellows.html"/>
+        <parameter name="targetPageTitle" value="Interns &amp; Fellows"/>
+        <parameter name="targetPageText" value="Since 1964 the National Gallery of Art has offered professional museum training to candidates from all backgrounds through a variety of internship and volunteer programs."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupEducationLearningResources">
+        <parameter name="menuGroup" value="3"/>
+        <parameter name="menuItem" value="6"/>
+        <parameter name="menuItemText" value="Learning Resources"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/education/learningresources.html"/>
+        <parameter name="targetPageTitle" value="About Learning Resources"/>
+        <parameter name="targetPageText" value="About Learning Resources"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+        <test name="TopMenuGroupConservation">
+        <parameter name="menuGroup" value="4"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Conservation"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/conservation.html"/>
+        <parameter name="targetPageTitle" value="Conservation"/>
+        <parameter name="targetPageText" value="Conservation"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupConservationProjects">
+        <parameter name="menuGroup" value="4"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Projects"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/conservation/projects.html"/>
+        <parameter name="targetPageTitle" value="Projects"/>
+        <parameter name="targetPageText" value="Conservation Projects"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupConservationPublications">
+        <parameter name="menuGroup" value="4"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Publications"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/conservation/publications.html"/>
+        <parameter name="targetPageTitle" value="Publications"/>
+        <parameter name="targetPageText" value="Division Publications"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupConservationResources">
+        <parameter name="menuGroup" value="4"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Resources"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/conservation/resources.html"/>
+        <parameter name="targetPageTitle" value="Resources"/>
+        <parameter name="targetPageText" value="Conservation Resources"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="TopMenuGroupResearch">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Research"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research.html"/>
+        <parameter name="targetPageTitle" value="Research"/>
+        <parameter name="targetPageText" value="Research"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchCASVA">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="CASVA"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/casva.html"/>
+        <parameter name="targetPageTitle" value="CASVA"/>
+        <parameter name="targetPageText" value="Center for Advanced Study in the Visual Arts (CASVA)"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchPublications">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Publications"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/publications.html"/>
+        <parameter name="targetPageTitle" value="Publications"/>
+        <parameter name="targetPageText" value="National Gallery of Art Publications"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchMakeanAppointment">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Make an Appointment"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/make-an-appointment.html"/>
+        <parameter name="targetPageTitle" value="Make an Appointment"/>
+        <parameter name="targetPageText" value="Make an Appointment"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchGalleryArchives">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Gallery Archives"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/gallery-archives.html"/>
+        <parameter name="targetPageTitle" value="Gallery Archives"/>
+        <parameter name="targetPageText" value="Gallery Archives"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchLibrary">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Library"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/library.html"/>
+        <parameter name="targetPageTitle" value="Library"/>
+        <parameter name="targetPageText" value="National Gallery of Art Library"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupResearchNGAOnlineEditions">
+        <parameter name="menuGroup" value="5"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="NGA Online Editions"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/research/online-editions.html"/>
+        <parameter name="targetPageTitle" value="Online Editions"/>
+        <parameter name="targetPageText" value="NGA Online Editions"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendar">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Calendar"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar.html"/>
+        <parameter name="targetPageTitle" value="Calendar"/>
+        <parameter name="targetPageText" value="Calendar of Events"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarFilmPrograms">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Film Programs"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/film-programs.html"/>
+        <parameter name="targetPageTitle" value="Film Programs"/>
+        <parameter name="targetPageText" value="Film Programs"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarConcerts">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Concerts"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/concerts.html"/>
+        <parameter name="targetPageTitle" value="Concerts"/>
+        <parameter name="targetPageText" value="Concerts"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarJazzPrograms">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Jazz Programs"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/jazz.html"/>
+        <parameter name="targetPageTitle" value="Jazz Programs"/>
+        <parameter name="targetPageText" value="Jazz Programs"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarGalleryTalks">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Gallery Talks"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/gallery-talks.html"/>
+        <parameter name="targetPageTitle" value="Gallery Talks"/>
+        <parameter name="targetPageText" value="Gallery Talks"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarLectures">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Lectures"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/lectures.html"/>
+        <parameter name="targetPageTitle" value="Lectures"/>
+        <parameter name="targetPageText" value="Lectures"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarGuidedTours">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="Guided Tours"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/guided-tours.html"/>
+        <parameter name="targetPageTitle" value="Guided Tours"/>
+        <parameter name="targetPageText" value="Guided Tours"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarFamilyActivities">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="6"/>
+        <parameter name="menuItemText" value="Family Activities"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/family-activities.html"/>
+        <parameter name="targetPageTitle" value="Family Activities"/>
+        <parameter name="targetPageText" value="Family Activities"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupCalendarChildrenandTeenFilms">
+        <parameter name="menuGroup" value="6"/>
+        <parameter name="menuItem" value="7"/>
+        <parameter name="menuItemText" value="Children and Teen Films"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/calendar/films-for-children.html"/>
+        <parameter name="targetPageTitle" value="Films for Children"/>
+        <parameter name="targetPageText" value="Films for Children"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+        <test name="TopMenuGroupSupport">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Support"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support.html"/>
+        <parameter name="targetPageTitle" value="Support Us"/>
+        <parameter name="targetPageText" value="Support Us"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportMembership">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Membership"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/membership.html"/>
+        <parameter name="targetPageTitle" value="Membership"/>
+        <parameter name="targetPageText" value="Andrew W. Mellon believed that his founding gifts would lead to successive waves of generosity, enriching the nation’s cultural heritage."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportMajorGiving">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Major Giving"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/major-giving.html"/>
+        <parameter name="targetPageTitle" value="Major Giving"/>
+        <parameter name="targetPageText" value="Private donations, in any amount, help sustain the Gallery’s standard of excellence envisioned by our founder, Andrew W. Mellon"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportPlannedGiving">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Planned Giving"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/planned-giving.html"/>
+        <parameter name="targetPageTitle" value="Planned Giving"/>
+        <parameter name="targetPageText" value="Planned gifts benefit the Gallery and provide the donor with an opportunity to create a lasting legacy for future generations while maximizing the tax benefits of a donation."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportCorporateGiving">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Corporate Giving"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/corporate-giving.html"/>
+        <parameter name="targetPageTitle" value="Corporate Giving"/>
+        <parameter name="targetPageText" value="Corporate Sponsorship offers corporations global visibility for their support of special exhibitions and important cultural programs."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportGiftsofArt">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="Gifts of Art"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/gifts-of-art.html"/>
+        <parameter name="targetPageTitle" value="Gifts of Art"/>
+        <parameter name="targetPageText" value="The National Gallery of Art houses a collection of masterpieces—American and European paintings, sculptures, prints, drawings, and photographs—dating from the late Middle Ages to the present day."/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupSupportDonateNow">
+        <parameter name="menuGroup" value="7"/>
+        <parameter name="menuItem" value="6"/>
+        <parameter name="menuItemText" value="Donate Now"/>
+        <parameter name="targetPageURL" value="/content/ngaweb/support/donate-now.html"/>
+        <parameter name="targetPageTitle" value="Donate Now"/>
+        <parameter name="targetPageText" value="Donate Now"/>
+        <parameter name="isNGAPage" value="true"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShop">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="-1"/>
+        <parameter name="menuItemText" value="Shop"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/"/>
+        <parameter name="targetPageTitle" value="National Gallery of Art Shops | Fine Museum Gifts | shop.nga.gov"/>
+        <parameter name="targetPageText" value="The National Gallery's renowned collection of paintings, sculpture, decorative arts, prints, and drawings is among the finest and most visited in the United States. Originally created in 1937 as a gift to the American people by Andrew Mellon"/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+        <test name="TopMenuGroupShopExhibitions">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="0"/>
+        <parameter name="menuItemText" value="Exhibitions"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/1000/exhibitions/1.html"/>
+        <parameter name="targetPageTitle" value="Exhibitions | National Gallery of Art Shops | shop.nga.gov"/>
+        <parameter name="targetPageText" value="The National Gallery of Art’s exhibition merchandise ranges from catalogs and other publications to jewelry and giftware, printed products such as posters and stationery, and other items, all created from the Gallery’s renowned permanent collections as well as the exceptional special exhibitions on view."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopBooksAndMedia">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="1"/>
+        <parameter name="menuItemText" value="Books &amp; Media"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/2000/books-media/1.html"/>
+        <parameter name="targetPageTitle" value="Books &amp; Media | National Gallery of Art Shops | shop.nga.gov"/>
+        <parameter name="targetPageText" value="Explore the world of art through a selection of fascinating books, films, and music developed from Gallery resources and acclaimed scholarship in the field."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopStationery">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="2"/>
+        <parameter name="menuItemText" value="Stationery"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/3000/stationery/1.html"/>
+        <parameter name="targetPageTitle" value="Stationery - National Gallery of Art Shops"/>
+        <parameter name="targetPageText" value="Choose from a selection of traditional and contemporary stationery, note card sets, postcard books, and calendars based on the Gallery’s permanent collection and special exhibitions."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopJewelry">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="3"/>
+        <parameter name="menuItemText" value="Jewelry"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/4000/jewelry/1.html"/>
+        <parameter name="targetPageTitle" value="Jewelry | National Gallery of Art Shops | shop.nga.gov"/>
+        <parameter name="targetPageText" value="Inspired by the Gallery’s collections as well as the artistic principles of color, light, and form, this unique selection of exquisite costume and fine jewelry includes necklaces, earrings, bracelets, pins, watches, rings, and cuff links."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopPrints">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="4"/>
+        <parameter name="menuItemText" value="Prints"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/5000/prints/1.html"/>
+        <parameter name="targetPageTitle" value="Prints - National Gallery of Art Shops"/>
+        <parameter name="targetPageText" value="Decorate your walls with posters, matted prints, and prints on canvas in a variety of sizes, created from images in our permanent collection and special exhibitions."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopApparel">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="5"/>
+        <parameter name="menuItemText" value="Apparel"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/6000/apparel/1.html"/>
+        <parameter name="targetPageTitle" value="Apparel | National Gallery of Art Shops | shop.nga.gov"/>
+        <parameter name="targetPageText" value="Browse a wide variety of stylish apparel that includes scarves, shawls, hats, T-shirts, ties, pocket squares, and children’s clothing."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopFortheHome">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="6"/>
+        <parameter name="menuItemText" value="For the Home"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/7000/for-the-home/1.html"/>
+        <parameter name="targetPageTitle" value="For the Home | National Gallery of Art Shops | shop.nga.gov"/>
+        <parameter name="targetPageText" value="Make the Gallery’s art part of your home decor with our exciting assortment of home wares inspired by the collection."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TopMenuGroupShopKids">
+        <parameter name="menuGroup" value="8"/>
+        <parameter name="menuItem" value="7"/>
+        <parameter name="menuItemText" value="Kids"/>
+        <parameter name="targetPageURL" value="https://shop.nga.gov/category/10000/kids/1.html"/>
+        <parameter name="targetPageTitle" value="Kids - National Gallery of Art Shops"/>
+        <parameter name="targetPageText" value="Delight children of all ages with our assortment of fun and educational toys that inspire creativity and learning, including art-oriented books and crafts, activity kits, baby and early childhood gifts, building blocks, games, puzzles, plush animals, children’s apparel, and more."/>
+        <parameter name="isNGAPage" value="false"/>
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.TopMenuTest">
+                <methods>
+                    <include name="menuGroups" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

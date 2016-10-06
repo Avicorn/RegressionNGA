@@ -32,8 +32,7 @@ public class FooterTest extends TestNgTestBase {
         
         //create excplicite wait
     
-        WebDriverWait wait = new WebDriverWait(driver,30000);
-        wait.until(ExpectedConditions.titleContains(title));        
+        m_wait.until(ExpectedConditions.titleContains(title));        
         //verify URL and title of the opened page
         Assert.assertTrue(driver.getCurrentUrl().contains(url));
         Assert.assertTrue(driver.getTitle().contains(title));  
@@ -49,9 +48,9 @@ public class FooterTest extends TestNgTestBase {
     public void verifyFooterLinks(String url, WebElement link ) throws InterruptedException{
         driver.get(m_baseUrl);
         String mainHandle = driver.getWindowHandle();
-        WebDriverWait wait = new WebDriverWait(driver,30000);
+        
         //Click on the link
-        wait.until(ExpectedConditions.elementToBeClickable(link));
+        m_wait.until(ExpectedConditions.elementToBeClickable(link));
         link.click();
         //create excplicite wait 
         Thread.sleep(2000);
@@ -67,7 +66,7 @@ public class FooterTest extends TestNgTestBase {
         }    
         else{
        //WebDriverWait wait = new WebDriverWait(driver,30000);
-        wait.until(ExpectedConditions.urlContains(url));        
+        m_wait.until(ExpectedConditions.urlContains(url));        
         //verify URL and title of the opened page
         Assert.assertTrue(driver.getCurrentUrl().contains(url));
         }
@@ -110,10 +109,9 @@ public class FooterTest extends TestNgTestBase {
         //Verify all footer menu options
         int index =0;
         while(index<8){
-            WebDriverWait wait = new WebDriverWait(driver,30000);
             Thread.sleep(2000);
             driver.get(m_baseUrl);
-            wait.until(ExpectedConditions.elementToBeClickable(page.footerMenu.get(index)));
+            m_wait.until(ExpectedConditions.elementToBeClickable(page.footerMenu.get(index)));
             page.footerMenu.get(index).click();
             verifyOpenedPage(footerMenuResults[index][0],footerMenuResults[index][1]);
             System.out.println("the footer menu is verified, index: "+index);
