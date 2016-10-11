@@ -6,10 +6,15 @@
 package com.ionidea.RegressionNGA.Tests;
 
 import com.ionidea.RegressionNGA.Tests.pages.ArtistInformationPage;
+import com.ionidea.RegressionNGA.Tests.pages.MainPage;
+import com.ionidea.RegressionNGA.Tests.pages.WidgetBibliographyPage;
+import com.ionidea.RegressionNGA.Tests.pages.WidgetBiographyPage;
+import com.ionidea.RegressionNGA.Tests.pages.WidgetWorksOfArtPage;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,129 +25,43 @@ import org.testng.annotations.Test;
  */
 public class ArtistInformation extends TestNgTestBase{ 
     
-    //WebDriverWait wait = new WebDriverWait(driver,30000);   
+
     
-    /**     * 
-     * @param list - the  list of WenElements of the page
-     * @return boolean
-     */
-    public boolean verifyAllElementsAreDisplayed(List<WebElement> list){
-        int index1 =0;
-        //verify all elements from the list
-        while(index1<list.size()){             
-             m_wait.until(ExpectedConditions.elementToBeClickable(list.get(index1)));
-             Assert.assertTrue(list.get(index1).isDisplayed());               
-             System.out.println("The element is displayed"+list.get(index1));
-             index1++; 
-        }
-        return true;
-    }
-    /**
-     * 
-     * @param list the list of check-boxes
-     * @return 
-     */    
-    public boolean verifyAllCheckBoxesAreUnselected(List<WebElement> list){
-        int index2 =0;
-        
-        //verify all elements from the list
-        while(index2<list.size()){
-             m_wait.until(ExpectedConditions.elementToBeClickable(list.get(index2)));
-             Assert.assertFalse(list.get(index2).isSelected());                
-             System.out.println("The element is not selected"+list.get(index2));
-             index2++;
-        }
-        return true;
-    }    
-    /**
-     * 
-     * @param listToClick - list of WebElements
-     * @return boolean 
-     */    
-    public boolean clickAllElements(List<WebElement> listToClick){
-        int index1 =0;
-        //verify all elements from the list
-        while(index1<listToClick.size()){
-             m_wait.until(ExpectedConditions.elementToBeClickable(listToClick.get(index1)));
-             listToClick.get(index1).click();  
-             index1++; 
-        }
-        System.out.println("All elements are selected");
-        return true;
-    }
-    /**
-     * 
-     * @param artistInformationPage - the page 
-     * @param list - the list of elements to count across all pages
-     * @return - number of Works of Art
-     * @throws InterruptedException 
-     */
-    public int addToListallWorkObjects(ArtistInformationPage artistInformationPage,List<WebElement> list) throws InterruptedException{
-        int number;
-        
-        // the list will contain elemtns from all pages
-        List<WebElement> entireList = new ArrayList<WebElement>();
-        entireList.addAll(list);
-        //open all pages one by one and add work objects to the entire list
-        try{
-            while(artistInformationPage.pageButtonNext.get(0).isDisplayed()){
-                Thread.sleep(2000);
-                artistInformationPage.pageButtonNext.get(0).click();
-                m_wait.until(ExpectedConditions.visibilityOfAllElements(list));
-                entireList.addAll(artistInformationPage.artistNameLabels); 
-                System.out.println("the entire number is:"+entireList.size());
-            }
-        }catch(Exception e){
-                System.out.println("The loop is over");
-        }
-        System.out.println("The full number of works of art is: 50!");
-        
-        //get the number of the ojects 
-        number=entireList.size();        
-        return number;
-        
-    }    
-    public void openPage(ArtistInformationPage page, WebElement uIElement) throws InterruptedException{
-        driver.get(m_baseUrl+page.getUrl());
-        Thread.sleep(2000);
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        uIElement.click();
-    }    
     @Test       
     
     //Verify that page contains all static UI elemtns
     public void elementsExistBiography() throws InterruptedException{
         
-        //Initiate new page
+        //Initiate new page (+widget)
         ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
-       
+        WidgetBiographyPage widget = new WidgetBiographyPage(driver);
         //move to the URL of test page
-        openPage(artistInformationPage,artistInformationPage.biographyLink);
+        artistInformationPage.openPageWidget(artistInformationPage,m_baseUrl,artistInformationPage.biographyLink);
+        m_wait.until(ExpectedConditions.visibilityOf(widget.biographyTitle));
         
         //Test static objects of Main page
-        assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
-        assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    
-        assertElementIsPresent(driver, artistInformationPage.nameTitle);
-        assertElementIsPresent(driver, artistInformationPage.descriptionName);
-        assertElementIsPresent(driver, artistInformationPage.descriptionDate);
-        assertElementIsPresent(driver, artistInformationPage.artistImage);
-        assertElementIsPresent(driver, artistInformationPage.citeLink);
-        assertElementIsPresent(driver, artistInformationPage.pdfLink);
-        assertElementIsPresent(driver, artistInformationPage.archivedVersionsLink);
-        assertElementIsPresent(driver, artistInformationPage.searchInputField);
-        assertElementIsPresent(driver, artistInformationPage.biographyLink);
-        assertElementIsPresent(driver, artistInformationPage.worksOfArtLink);
-        assertElementIsPresent(driver, artistInformationPage.artistBibliographyLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.nameTitle);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.descriptionName);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.descriptionDate);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.artistImage);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.citeLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.pdfLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.archivedVersionsLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.searchInputField);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.biographyLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.worksOfArtLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.artistBibliographyLink);
         System.out.println("all static elements are displayed");
         
-        //Test the objects of #Biography
-        assertTextIsPresent(driver, artistInformationPage.biographyTitle,"BIOGRAPHY");
-        assertTextIsPresent(driver, artistInformationPage.textBegin,"Nicolaes Berchem was one of the most popular and successful Italianate landscape painters of his day. Aside from views of Italy, his extensive oeuvre of paintings, drawings, and etchings consists of depictions of the hunt and biblical and mythological scenes. Born in Haarlem in 1620, Berchem received his early training under his father, the still-life painter Pieter Claesz (Dutch, 1596/1597 - 1660). Houbra­ken, however, enumerated other teachers, including Jan van Goyen (Dutch, 1596 - 1656), Claes Moeyaert (1591–1655), Pieter de Grebber (c. 1600–1652/1653), Jan Wils (c. 1600–1666), and, somewhat improbably, Berchem’s younger cousin Jan Baptist Weenix (1621–1660/1661).");
-        assertTextIsPresent(driver, artistInformationPage.theAuthorName,"Arthur K. Wheelock Jr.");
-        assertTextIsPresent(driver, artistInformationPage.dateOfArticle,"April 24, 2014");
+        //Test the objects of #Biography 
+        artistInformationPage.assertTextIsPresent(driver, widget.biographyTitle,"BIOGRAPHY");
+        artistInformationPage.assertTextIsPresent(driver, widget.textBegin,"Nicolaes Berchem was one of the most popular and successful Italianate landscape painters of his day. Aside from views of Italy, his extensive oeuvre of paintings, drawings, and etchings consists of depictions of the hunt and biblical and mythological scenes. Born in Haarlem in 1620, Berchem received his early training under his father, the still-life painter Pieter Claesz (Dutch, 1596/1597 - 1660). Houbra­ken, however, enumerated other teachers, including Jan van Goyen (Dutch, 1596 - 1656), Claes Moeyaert (1591–1655), Pieter de Grebber (c. 1600–1652/1653), Jan Wils (c. 1600–1666), and, somewhat improbably, Berchem’s younger cousin Jan Baptist Weenix (1621–1660/1661).");
+        artistInformationPage.assertTextIsPresent(driver, widget.theAuthorName,"Arthur K. Wheelock Jr.");
+        artistInformationPage.assertTextIsPresent(driver, widget.dateOfArticle,"April 24, 2014");
     }  
-    //Verify all UI elements of the #Bibliography
+    //Verify all UI elements of the #Bibliography (+widget)
     
     
     
@@ -150,16 +69,16 @@ public class ArtistInformation extends TestNgTestBase{
         
         public void elementsExistBibliography() throws InterruptedException{            
         
-        //Initiate new page
+        //Initiate new page (+widget)
         ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
+        WidgetBibliographyPage widget = new WidgetBibliographyPage(driver);
         
         //move to the URL of test page
-        openPage(artistInformationPage,artistInformationPage.bibliographyLink);
-        
-        m_wait.until(ExpectedConditions.visibilityOf(artistInformationPage.bibliographyLabel));
+        artistInformationPage.openPageWidget(artistInformationPage,m_baseUrl,artistInformationPage.artistBibliographyLink);
+        m_wait.until(ExpectedConditions.visibilityOf(widget.bibliographyLabel));
         
         //Verify all static  elements of the page
-        assertTextIsPresent(driver,artistInformationPage.bibliographyLabel,"BIBLIOGRAPHY");
+        artistInformationPage.assertTextIsPresent(driver,widget.bibliographyLabel,"BIBLIOGRAPHY");
         System.out.println("the label is displayed");
         
         //Add all text elements to array
@@ -197,54 +116,55 @@ public class ArtistInformation extends TestNgTestBase{
         //Verify all found static web elemnts contain respective text
         int x=0;
         while (x<10){
-            assertTextIsPresent(driver,artistInformationPage.yearLabel.get(x),years[x][0]);
-            System.out.println("The element verified: "+artistInformationPage.yearLabel.get(x));
-            assertTextIsPresent(driver,artistInformationPage.yearDescriptionLabel.get(x),years[x][1]);
-            System.out.println("The element verified: "+artistInformationPage.yearDescriptionLabel.get(x));
+            artistInformationPage.assertTextIsPresent(driver,widget.yearLabel.get(x),years[x][0]);
+            System.out.println("The element verified: "+widget.yearLabel.get(x));
+            artistInformationPage.assertTextIsPresent(driver,widget.yearDescriptionLabel.get(x),years[x][1]);
+            System.out.println("The element verified: "+widget.yearDescriptionLabel.get(x));
             x++;
             
             }
         }
                 
                 
-        @Test
+        @Test 
         public void elementsExistWorksOfArt() throws InterruptedException{
         
-        //Initiate new page
-        ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);   
+        //Initiate new page (+widget)
+        ArtistInformationPage artistInformationPage = new ArtistInformationPage(driver);
+        WidgetWorksOfArtPage widget=new WidgetWorksOfArtPage(driver);
                 
         //move to the URL of test page
-        openPage(artistInformationPage,artistInformationPage.worksOfArtLink);        
-        m_wait.until(ExpectedConditions.visibilityOf(artistInformationPage.leftAccordionsClosed.get(1)));    
+        artistInformationPage.openPageWidget(artistInformationPage,m_baseUrl,artistInformationPage.worksOfArtLink);        
+        m_wait.until(ExpectedConditions.visibilityOf(widget.leftAccordionsClosed.get(1)));    
        
         //Verify number  of folter accordions        
-        Assert.assertEquals(artistInformationPage.leftAccordionsClosed.size(),7);  
+        Assert.assertEquals(widget.leftAccordionsClosed.size(),7, "The quantity of left accordions is less than expected");  
         System.out.println("the number of accordions is correct");
         
         //Expand all accordions
-        clickAllElements(artistInformationPage.leftAccordionsClosed);
+        widget.clickAllElements(widget.leftAccordionsClosed, (FluentWait) m_wait);
         System.out.println("all closed accordions are displayed");
         
         //verify all left accordions
-        verifyAllElementsAreDisplayed(artistInformationPage.leftAccordionsOpen);
+        widget.verifyAllElementsAreDisplayed(widget.leftAccordionsOpen, (FluentWait) m_wait);
         System.out.println("all open accordions are displayed");
         
         //verify all check-boxes and respective labels
-        Assert.assertEquals(artistInformationPage.allCheckBoxes.size(),artistInformationPage.allLabels.size());
-        Assert.assertEquals(artistInformationPage.allCheckBoxes.size(),11);
-        verifyAllElementsAreDisplayed(artistInformationPage.allCheckBoxes);
-        verifyAllElementsAreDisplayed(artistInformationPage.allLabels);
+        Assert.assertEquals(widget.allCheckBoxes.size(),widget.allLabels.size(),"the check-boxes quantity is less than labels'");
+        Assert.assertEquals(widget.allCheckBoxes.size(),11, "the labels quantity is not equal to 11");
+        widget.verifyAllElementsAreDisplayed(widget.allCheckBoxes, (FluentWait) m_wait);
+        widget.verifyAllElementsAreDisplayed(widget.allLabels, (FluentWait) m_wait);
         
         //verify all check-boxes are unselected
-        verifyAllCheckBoxesAreUnselected(artistInformationPage.allCheckBoxes);
-        System.out.println("all checkboxes are verified, the number is:" +artistInformationPage.allCheckBoxes.size());
+        widget.verifyAllCheckBoxesAreUnselected(widget.allCheckBoxes, (FluentWait) m_wait);
+        System.out.println("all checkboxes are verified, the number is:" +widget.allCheckBoxes.size());
         
         
 
         //Verify the number of the works of art
         int worksNumber;
-        worksNumber = addToListallWorkObjects(artistInformationPage,artistInformationPage.artistNameLabels);
-        Assert.assertEquals(worksNumber,50);
+        worksNumber = widget.addToListallWorkObjects(widget,widget.artistNameLabels,4, (FluentWait) m_wait);
+        Assert.assertEquals(worksNumber,50, "works number is not equal to 50");
         System.out.println("The number of author labels is - 50");
   
         

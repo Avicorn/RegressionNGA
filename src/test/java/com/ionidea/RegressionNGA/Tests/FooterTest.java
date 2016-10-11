@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Test QA
+ * @author TestQA
  */
 public class FooterTest extends TestNgTestBase {
         
@@ -128,7 +128,7 @@ public class FooterTest extends TestNgTestBase {
         
         //Verify text of the copyright label
         driver.get(m_baseUrl);
-        assertTextIsPresent(driver,page.copyRightLabel,"© 2016 National Gallery of Art");
+        page.assertTextIsPresent(driver,page.copyRightLabel,"© 2016 National Gallery of Art");
         System.out.println("The copyright information is correct");
         
     }

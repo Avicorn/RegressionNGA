@@ -49,7 +49,9 @@ public abstract class Page{
             System.exit(1);
         }
     }
-
+    
+  
+    
     public String getTitle() {
         return driver.getTitle();
     }
