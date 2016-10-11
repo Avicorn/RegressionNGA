@@ -7,6 +7,18 @@
             <class name="com.ionidea.RegressionNGA.Tests.ArtistInformation"/>
         </classes>
     </test>
+    
+    <test name="ProvenanceInformation">
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.FooterTest"/>
+        </classes>
+    </test>
+    
+    <test name="MainPageHeaderTest">
+        <classes>
+            <class name="com.ionidea.RegressionNGA.Tests.FooterTest"/>
+        </classes>
+    </test>
 
     <test name="FooterTest">
         <classes>
