@@ -77,7 +77,7 @@ public class MainPageHeaderTest extends TestNgTestBase{
         @DataProvider
         public Object[][] collectionSubMenu() {
             return new Object[][]{
-                /*
+                
                 //Visit
             {"/content/ngaweb/visit/getting-here.html", "Getting Here",0,0},            
             {"/content/ngaweb/visit/accessibility.html", "Accessibility",0,1},
@@ -87,9 +87,8 @@ public class MainPageHeaderTest extends TestNgTestBase{
             {"/content/ngaweb/visit/ice-rink.html","The Ice Rink",0,5},
             {"/content/ngaweb/visit/copyist.html","Copyist",0,6},  
             {"/content/ngaweb/visit/visitor-policies.html","Visitor Policies",0,7},
-            
-                             
-                // Collection 
+                                         
+               // Collection 
             {"/content/ngaweb/Collection/highlights.html", "Highlights",1,0},
             {"/content/ngaweb/Collection/collection-search.html","Collection Search",1,1},
             {"/content/ngaweb/Collection/artists.html", "Artists",1,2},
@@ -101,7 +100,7 @@ public class MainPageHeaderTest extends TestNgTestBase{
             {"/content/ngaweb/exhibitions/ontour.html", "On Tour",2,2},
             {"/content/ngaweb/exhibitions/past.html","Past",2,3},
             
-              //Education
+                //Education
             {"/content/ngaweb/education/teachers.html", "Teachers",3,0},
             {"/content/ngaweb/education/families.html","Families",3,1},
             {"/content/ngaweb/education/kids.html", "NGAkids Art Zone",3,2},
@@ -132,8 +131,7 @@ public class MainPageHeaderTest extends TestNgTestBase{
             {"/content/ngaweb/calendar/guided-tours.html", "Guided Tours",6,5},
             {"/content/ngaweb/calendar/family-activities.html","Family Activities",6,6},
             {"/content/ngaweb/calendar/films-for-children.html","Films for Children",6,7},
-            
-           
+                       
                 //Support
             {"/content/ngaweb/support/vital-partnerships.html", "Vital Partnerships",7,0},
             {"/content/ngaweb/support/membership.html","Membership",7,1},
@@ -142,7 +140,7 @@ public class MainPageHeaderTest extends TestNgTestBase{
             {"/content/ngaweb/support/corporate-giving.html","Corporate Giving",7,4},
             {"/content/ngaweb/support/gifts-of-art.html","Gifts of Art",7,5},
             {"/content/ngaweb/support/donate-now.html","Donate Now",7,6},
-            */
+            
                 //Shop
             {"/category/1000/exhibitions/1.html", "Exhibitions | National Gallery of Art Shops | shop.nga.gov",8,0},
             {"/category/2000/books-media/1.html","Books ",8,1},
