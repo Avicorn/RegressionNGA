@@ -38,7 +38,7 @@ public class WidgetWorksOfArtPage extends MainPage{
     @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div[not(@style='display: none;')]/h3")
     public List<WebElement> leftAccordionsOpen;
     
-    @FindBy(how = How.XPATH, using ="*//fieldset [@Id='artobject-fieldset']/div/div/ul/li/input [not(@disabled='disabled')]")
+    @FindBy(how = How.XPATH, using ="//div[@class='drawer section active-facet']/div/ul/li/input")
     public List<WebElement> allCheckBoxes;
     
     @FindBy(how = How.XPATH, using ="//fieldset[@id='artobject-fieldset']/div [not(@style='display: none;')]/div/ul/li/label")

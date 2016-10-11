@@ -6,6 +6,7 @@
 package com.ionidea.RegressionNGA.Tests;
 
 import com.ionidea.RegressionNGA.Tests.pages.ArtistInformationPage;
+import com.ionidea.RegressionNGA.Tests.pages.MainPage;
 import com.ionidea.RegressionNGA.Tests.pages.WidgetBibliographyPage;
 import com.ionidea.RegressionNGA.Tests.pages.WidgetBiographyPage;
 import com.ionidea.RegressionNGA.Tests.pages.WidgetWorksOfArtPage;
@@ -39,26 +40,26 @@ public class ArtistInformation extends TestNgTestBase{
         m_wait.until(ExpectedConditions.visibilityOf(widget.biographyTitle));
         
         //Test static objects of Main page
-        assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
-        assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    
-        assertElementIsPresent(driver, artistInformationPage.nameTitle);
-        assertElementIsPresent(driver, artistInformationPage.descriptionName);
-        assertElementIsPresent(driver, artistInformationPage.descriptionDate);
-        assertElementIsPresent(driver, artistInformationPage.artistImage);
-        assertElementIsPresent(driver, artistInformationPage.citeLink);
-        assertElementIsPresent(driver, artistInformationPage.pdfLink);
-        assertElementIsPresent(driver, artistInformationPage.archivedVersionsLink);
-        assertElementIsPresent(driver, artistInformationPage.searchInputField);
-        assertElementIsPresent(driver, artistInformationPage.biographyLink);
-        assertElementIsPresent(driver, artistInformationPage.worksOfArtLink);
-        assertElementIsPresent(driver, artistInformationPage.artistBibliographyLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.onlineEditions);         
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.nameBreadCrumb);    
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.nameTitle);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.descriptionName);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.descriptionDate);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.artistImage);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.citeLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.pdfLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.archivedVersionsLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.searchInputField);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.biographyLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.worksOfArtLink);
+        artistInformationPage.assertElementIsPresent(driver, artistInformationPage.artistBibliographyLink);
         System.out.println("all static elements are displayed");
         
         //Test the objects of #Biography 
-        assertTextIsPresent(driver, widget.biographyTitle,"BIOGRAPHY");
-        assertTextIsPresent(driver, widget.textBegin,"Nicolaes Berchem was one of the most popular and successful Italianate landscape painters of his day. Aside from views of Italy, his extensive oeuvre of paintings, drawings, and etchings consists of depictions of the hunt and biblical and mythological scenes. Born in Haarlem in 1620, Berchem received his early training under his father, the still-life painter Pieter Claesz (Dutch, 1596/1597 - 1660). Houbra­ken, however, enumerated other teachers, including Jan van Goyen (Dutch, 1596 - 1656), Claes Moeyaert (1591–1655), Pieter de Grebber (c. 1600–1652/1653), Jan Wils (c. 1600–1666), and, somewhat improbably, Berchem’s younger cousin Jan Baptist Weenix (1621–1660/1661).");
-        assertTextIsPresent(driver, widget.theAuthorName,"Arthur K. Wheelock Jr.");
-        assertTextIsPresent(driver, widget.dateOfArticle,"April 24, 2014");
+        artistInformationPage.assertTextIsPresent(driver, widget.biographyTitle,"BIOGRAPHY");
+        artistInformationPage.assertTextIsPresent(driver, widget.textBegin,"Nicolaes Berchem was one of the most popular and successful Italianate landscape painters of his day. Aside from views of Italy, his extensive oeuvre of paintings, drawings, and etchings consists of depictions of the hunt and biblical and mythological scenes. Born in Haarlem in 1620, Berchem received his early training under his father, the still-life painter Pieter Claesz (Dutch, 1596/1597 - 1660). Houbra­ken, however, enumerated other teachers, including Jan van Goyen (Dutch, 1596 - 1656), Claes Moeyaert (1591–1655), Pieter de Grebber (c. 1600–1652/1653), Jan Wils (c. 1600–1666), and, somewhat improbably, Berchem’s younger cousin Jan Baptist Weenix (1621–1660/1661).");
+        artistInformationPage.assertTextIsPresent(driver, widget.theAuthorName,"Arthur K. Wheelock Jr.");
+        artistInformationPage.assertTextIsPresent(driver, widget.dateOfArticle,"April 24, 2014");
     }  
     //Verify all UI elements of the #Bibliography (+widget)
     
@@ -77,7 +78,7 @@ public class ArtistInformation extends TestNgTestBase{
         m_wait.until(ExpectedConditions.visibilityOf(widget.bibliographyLabel));
         
         //Verify all static  elements of the page
-        assertTextIsPresent(driver,widget.bibliographyLabel,"BIBLIOGRAPHY");
+        artistInformationPage.assertTextIsPresent(driver,widget.bibliographyLabel,"BIBLIOGRAPHY");
         System.out.println("the label is displayed");
         
         //Add all text elements to array
@@ -115,9 +116,9 @@ public class ArtistInformation extends TestNgTestBase{
         //Verify all found static web elemnts contain respective text
         int x=0;
         while (x<10){
-            assertTextIsPresent(driver,widget.yearLabel.get(x),years[x][0]);
+            artistInformationPage.assertTextIsPresent(driver,widget.yearLabel.get(x),years[x][0]);
             System.out.println("The element verified: "+widget.yearLabel.get(x));
-            assertTextIsPresent(driver,widget.yearDescriptionLabel.get(x),years[x][1]);
+            artistInformationPage.assertTextIsPresent(driver,widget.yearDescriptionLabel.get(x),years[x][1]);
             System.out.println("The element verified: "+widget.yearDescriptionLabel.get(x));
             x++;
             
@@ -137,7 +138,7 @@ public class ArtistInformation extends TestNgTestBase{
         m_wait.until(ExpectedConditions.visibilityOf(widget.leftAccordionsClosed.get(1)));    
        
         //Verify number  of folter accordions        
-        Assert.assertEquals(widget.leftAccordionsClosed.size(),7);  
+        Assert.assertEquals(widget.leftAccordionsClosed.size(),7, "The quantity of left accordions is less than expected");  
         System.out.println("the number of accordions is correct");
         
         //Expand all accordions
@@ -149,8 +150,8 @@ public class ArtistInformation extends TestNgTestBase{
         System.out.println("all open accordions are displayed");
         
         //verify all check-boxes and respective labels
-        Assert.assertEquals(widget.allCheckBoxes.size(),widget.allLabels.size());
-        Assert.assertEquals(widget.allCheckBoxes.size(),11);
+        Assert.assertEquals(widget.allCheckBoxes.size(),widget.allLabels.size(),"the check-boxes quantity is less than labels'");
+        Assert.assertEquals(widget.allCheckBoxes.size(),11, "the labels quantity is not equal to 11");
         widget.verifyAllElementsAreDisplayed(widget.allCheckBoxes, (FluentWait) m_wait);
         widget.verifyAllElementsAreDisplayed(widget.allLabels, (FluentWait) m_wait);
         
@@ -163,7 +164,7 @@ public class ArtistInformation extends TestNgTestBase{
         //Verify the number of the works of art
         int worksNumber;
         worksNumber = widget.addToListallWorkObjects(widget,widget.artistNameLabels,4, (FluentWait) m_wait);
-        Assert.assertEquals(worksNumber,50);
+        Assert.assertEquals(worksNumber,50, "works number is not equal to 50");
         System.out.println("The number of author labels is - 50");
   
         

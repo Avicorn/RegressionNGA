@@ -7,6 +7,7 @@ package com.ionidea.RegressionNGA.Tests;
 
 import static com.ionidea.RegressionNGA.Tests.TestNgTestBase.m_baseUrl;
 import com.ionidea.RegressionNGA.Tests.pages.ArtistInformationPage;
+import com.ionidea.RegressionNGA.Tests.pages.MainPage;
 import com.ionidea.RegressionNGA.Tests.pages.ProvenanceInformationPage;
 import com.ionidea.RegressionNGA.Tests.pages.WidgetBibliographyPage;
 import com.ionidea.RegressionNGA.Tests.pages.WidgetBiographyPage;
@@ -35,18 +36,18 @@ public class ProvenanceInformation extends TestNgTestBase{
         m_wait.until(ExpectedConditions.visibilityOf(provenanceInformationPage.artistDescription));
         
         //Verify all static page elements
-        assertElementIsPresent(driver,provenanceInformationPage.relatedContentLink);
-        assertElementIsPresent(driver,provenanceInformationPage.worksOfArtLink);
-        assertTextIsPresent(driver,provenanceInformationPage.artistNameTitle,"Frank, Robert");
-        assertTextIsPresent(driver,provenanceInformationPage.artistDescription,"Robert Frank c/o Pace/MacGill Gallery");
-        assertTextIsPresent(driver,provenanceInformationPage.artistLifeSpan,"American, born Switzerland, 1924");
+        provenanceInformationPage.assertElementIsPresent(driver,provenanceInformationPage.relatedContentLink);
+        provenanceInformationPage.assertElementIsPresent(driver,provenanceInformationPage.worksOfArtLink);
+        provenanceInformationPage.assertTextIsPresent(driver,provenanceInformationPage.artistNameTitle,"Frank, Robert");
+        provenanceInformationPage.assertTextIsPresent(driver,provenanceInformationPage.artistDescription,"Robert Frank c/o Pace/MacGill Gallery");
+        provenanceInformationPage.assertTextIsPresent(driver,provenanceInformationPage.artistLifeSpan,"American, born Switzerland, 1924");
         
         //Open another page example
         driver.get(m_baseUrl+"/content/ngaweb/Collection/provenance-info.29368.html");
         driver.manage().window().maximize();
         m_wait.until(ExpectedConditions.visibilityOf(provenanceInformationPage.artistDescription));
-        assertElementIsPresent(driver,provenanceInformationPage.biographyLink);
-        assertElementIsPresent(driver,provenanceInformationPage.artistBibliographyLink);
+        provenanceInformationPage.assertElementIsPresent(driver,provenanceInformationPage.biographyLink);
+        provenanceInformationPage.assertElementIsPresent(driver,provenanceInformationPage.artistBibliographyLink);
         
     }
     
@@ -114,7 +115,7 @@ public class ProvenanceInformation extends TestNgTestBase{
         
                 
         //Verify all static  elements of the page
-        assertTextIsPresent(driver,widget.bibliographyLabel,"BIBLIOGRAPHY");
+        provenanceInformationPage.assertTextIsPresent(driver,widget.bibliographyLabel,"BIBLIOGRAPHY");
         System.out.println("the label is displayed");
         
         //Add all text elements to array
@@ -124,9 +125,9 @@ public class ProvenanceInformation extends TestNgTestBase{
                          
         //Verify all found static web elemnts contain respective text
 
-        assertTextIsPresent(driver,widget.yearLabel.get(0),years[0][0]);
+        provenanceInformationPage.assertTextIsPresent(driver,widget.yearLabel.get(0),years[0][0]);
         System.out.println("The element verified: "+widget.yearLabel.get(0));
-        assertTextIsPresent(driver,widget.yearDescriptionLabel.get(0),years[0][1]);
+        MainPage.assertTextIsPresent(driver,widget.yearDescriptionLabel.get(0),years[0][1]);
         System.out.println("The element verified: "+widget.yearDescriptionLabel.get(0));
 
         }
@@ -146,8 +147,8 @@ public class ProvenanceInformation extends TestNgTestBase{
         provenanceInformationPage.biographyLink.click();
         
         //Test the objects of #Biography 
-        assertTextIsPresent(driver, widget.biographyTitle,"BIOGRAPHY");
-        assertElementIsPresent(driver, widget.biographyAll);
+        provenanceInformationPage.assertTextIsPresent(driver, widget.biographyTitle,"BIOGRAPHY");
+        provenanceInformationPage.assertElementIsPresent(driver, widget.biographyAll);
                 
     }
     
@@ -166,11 +167,11 @@ public class ProvenanceInformation extends TestNgTestBase{
         provenanceInformationPage.relatedContentLink.click();
         
         //Verify all elements
-        Assert.assertTrue(widget.relatedContentDescription.size()==3);
-        Assert.assertTrue(widget.relatedContentImage.size()==3);
-        Assert.assertTrue(widget.relatedContentResultLink.size()==4);
-        Assert.assertTrue(widget.relatedContentResultTitle.size()==4);
-        Assert.assertTrue(widget.relatedContentTitle.isDisplayed());
+        Assert.assertTrue(widget.relatedContentDescription.size()==3, "The quantity of related content elements is not correct");
+        Assert.assertTrue(widget.relatedContentImage.size()==3,"The quantity of related content elements is not correct");
+        Assert.assertTrue(widget.relatedContentResultLink.size()==4, "The quantity of related content elements is not correct");
+        Assert.assertTrue(widget.relatedContentResultTitle.size()==4, "The quantity of related content elements is not correct");
+        Assert.assertTrue(widget.relatedContentTitle.isDisplayed(), "The titlw is not displayed");
         System.out.println("The array size check is completed");
         
         //Verify all Elelemnts are visible
